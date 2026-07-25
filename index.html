@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Asma Shahzadi | Full-Stack &amp; AI Engineer</title>
+<meta name="description" content="Asma Shahzadi — Full Stack Developer. React, Node.js &amp; AI-integrated web applications, shipped and deployed, not just demoed."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        .text-glow-sage {
+            text-shadow: 0 0 15px rgba(141, 163, 153, 0.3);
+        }
+        .clip-path-poly {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* ===== Animations ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+        .reveal-delay-4 { transition-delay: 0.32s; }
+        .reveal-delay-5 { transition-delay: 0.4s; }
+
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .float-anim { animation: gentle-float 4.5s ease-in-out infinite; }
+
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee-scroll 26s linear infinite;
+        }
+        .marquee-mask {
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .typewriter-caret {
+            display: inline-block;
+            width: 2px;
+            margin-left: 2px;
+            background: currentColor;
+            animation: caret-blink 1s step-start infinite;
+        }
+        @keyframes caret-blink {
+            50% { opacity: 0; }
+        }
+
+        .img-fallback {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(141,163,153,0.15), rgba(141,163,153,0.05));
+        }
+        .img-empty .img-fallback { display: flex; }
+        .img-empty img { display: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#b5ccc1",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#5b403e",
+                      "surface-bright": "#f9f9f9",
+                      "on-secondary-fixed-variant": "#474746",
+                      "surface-dim": "#dadada",
+                      "inverse-surface": "#2f3131",
+                      "primary-container": "#8da399",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#636262",
+                      "on-surface-variant": "#424845",
+                      "secondary": "#5f5e5e",
+                      "outline-variant": "#c2c8c4",
+                      "surface-container": "#eeeeee",
+                      "outline": "#727875",
+                      "secondary-container": "#e2dfde",
+                      "inverse-primary": "#b5ccc1",
+                      "on-tertiary-fixed": "#2b1614",
+                      "primary": "#4e635a",
+                      "inverse-on-surface": "#f0f1f1",
+                      "background": "#f9f9f9",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-primary-fixed-variant": "#374b43",
+                      "tertiary": "#755755",
+                      "surface-variant": "#e2e2e2",
+                      "on-error-container": "#93000a",
+                      "on-background": "#1a1c1c",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#1a1c1c",
+                      "surface-container-low": "#f3f3f3",
+                      "secondary-fixed": "#e5e2e1",
+                      "tertiary-container": "#b99693",
+                      "surface": "#f9f9f9",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#263932",
+                      "tertiary-fixed-dim": "#e4beba",
+                      "on-primary-fixed": "#0b1f18",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "surface-container-high": "#e8e8e8",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffdad7",
+                      "surface-tint": "#4e635a",
+                      "on-tertiary-container": "#482f2d",
+                      "primary-fixed": "#d1e8dd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "container-max": "1120px",
+                      "margin-mobile": "20px",
+                      "section-gap": "80px",
+                      "stack-lg": "32px",
+                      "gutter": "24px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Geist Sans"],
+                      "label-md": ["Geist Sans"],
+                      "headline-md": ["Geist Sans"],
+                      "headline-lg-mobile": ["Geist Sans"],
+                      "headline-lg": ["Geist Sans"],
+                      "code-sm": ["Geist Mono"],
+                      "headline-xl": ["Geist Sans"],
+                      "body-md": ["Geist Sans"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation (Desktop) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline/10 shadow-sm">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-primary">Asma Shahzadi</span>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-7">
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary transition-colors duration-300" href="#home">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#about">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#achievements">Achievements</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#work">Work</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#experience">Experience</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#connect">Connect</a>
+</nav>
+<a class="hidden md:flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-full font-label-md hover:scale-105 active:scale-95 transition-all shadow-md" download="" href="resume.pdf">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+                Download Resume
+            </a>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden" id="home">
+<div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
+
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid md:grid-cols-2 gap-stack-lg items-center relative z-10">
+<div class="space-y-6 reveal in-view">
+<div class="inline-flex items-center gap-2 bg-primary-container/10 border border-primary/20 px-4 py-1.5 rounded-full text-primary font-label-md">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                        Open to Full-Time &amp; Remote Opportunities
+                    </div>
+<h1 class="font-headline-xl text-headline-xl md:text-6xl text-on-surface tracking-tight">
+                        Engineering the Future of <span class="text-primary">Full Stack &amp; AI</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Final-year full-stack developer who ships production apps — a live clinic booking system, an e-commerce store, and an agentic AI tool that won a spot at a national hackathon.
+                    </p>
+<p class="font-code-sm text-code-sm text-primary/80 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="terminal">terminal</span>
+<span id="typewriter"></span><span class="typewriter-caret h-4"></span>
+</p>
+<div class="flex flex-wrap gap-4 pt-4">
+<a class="bg-primary text-on-primary px-8 py-4 rounded-xl font-label-md text-lg hover:bg-primary/90 transition-colors shadow-lg flex items-center gap-2" download="" href="resume.pdf">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                            Download Resume
+                        </a>
+<a class="bg-surface-container border border-outline/10 px-8 py-4 rounded-xl font-label-md text-lg hover:bg-surface-variant transition-colors flex items-center gap-2" href="#connect">
+                            Get in Touch
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="relative justify-self-center md:justify-self-end w-full max-w-[440px] reveal reveal-delay-2 in-view">
+<div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative ring-1 ring-black/5 img-wrap">
+<img alt="Asma Shahzadi" class="w-full h-full object-cover object-top" src="assets/profile-photo.jpg" onerror="this.parentElement.classList.add('img-empty')"/>
+<div class="img-fallback">
+<span class="material-symbols-outlined text-primary text-5xl" data-icon="person">person</span>
+<small class="text-on-surface-variant text-xs px-4 text-center">Save photo as assets/profile-photo.jpg</small>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-4">
+<div class="glass-card px-5 py-4 rounded-2xl float-anim">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="verified">verified</span>
+<div class="flex flex-col">
+<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Certified by</span>
+<span class="font-bold text-on-surface text-sm">Meta · Google · IBM</span>
+</div>
+</div>
+</div>
+<div class="glass-card px-5 py-4 rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="code">code</span>
+<div class="flex flex-col">
+<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Role</span>
+<span class="font-bold text-on-surface text-sm">Full-Stack Developer</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap bg-surface-container-low relative" id="about">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8 reveal">
+<div>
+<span class="text-primary font-bold tracking-widest uppercase text-sm">The Engineering Mindset</span>
+<h2 class="font-headline-lg text-headline-lg mt-2">Turning Complex Problems into Seamless Software</h2>
+</div>
+<div class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+<p>Final-year BS Information Technology student at Women University Multan (2023–2027), CGPA 3.43.</p>
+<p>I build and ship real production software — not just class projects — including a live booking system for a dental clinic and an award-winning agentic AI app.</p>
+</div>
+<div class="glass-card p-8 rounded-3xl flex items-center gap-6 border-l-4 border-l-primary">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">30+ Global Certifications</h4>
+<p class="text-on-surface-variant">Recognized by Meta, Google, and IBM for excellence in AI and Full-Stack Engineering.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="relative bg-gradient-to-br from-primary/10 to-transparent p-6 rounded-3xl border border-primary/15 hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 reveal reveal-delay-1">
+<span class="material-symbols-outlined text-primary text-2xl mb-3 block" data-icon="school">school</span>
+<span class="font-headline-xl text-primary block stat-num" data-target="3.43" data-decimals="2">0.00</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-widest text-xs">CGPA</span>
+</div>
+<div class="relative bg-gradient-to-br from-primary/10 to-transparent p-6 rounded-3xl border border-primary/15 hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 reveal reveal-delay-2">
+<span class="material-symbols-outlined text-primary text-2xl mb-3 block" data-icon="rocket_launch">rocket_launch</span>
+<span class="font-headline-xl text-primary block"><span class="stat-num" data-target="6" data-decimals="0">0</span>+</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-widest text-xs">Projects Shipped</span>
+</div>
+<div class="relative bg-gradient-to-br from-primary/10 to-transparent p-6 rounded-3xl border border-primary/15 hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 reveal reveal-delay-3">
+<span class="material-symbols-outlined text-primary text-2xl mb-3 block" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-headline-xl text-primary block"><span class="stat-num" data-target="30" data-decimals="0">0</span>+</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-widest text-xs">Certs</span>
+</div>
+<div class="relative bg-gradient-to-br from-primary/10 to-transparent p-6 rounded-3xl border border-primary/15 hover:-translate-y-1.5 hover:shadow-lg transition-all duration-300 reveal reveal-delay-4">
+<span class="text-2xl mb-3 block float-anim">🏆</span>
+<span class="font-headline-md text-headline-md text-primary block leading-tight">Top Performer</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-widest text-xs">Hackathon</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="py-section-gap" id="stack">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="text-center mb-16 reveal">
+<h2 class="font-headline-lg text-headline-lg">Professional Tech Stack</h2>
+<p class="text-on-surface-variant mt-4">Leveraging modern architectures to build scalable solutions.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- AI & ML -->
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-1">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">AI &amp; ML</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">LangChain</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">FAISS</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">RAG Arch</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Groq LLM</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Prompt Eng.</span>
+</div>
+</div>
+<!-- Frontend -->
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-2">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="web">web</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Frontend</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">React.js</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">JavaScript</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Tailwind CSS</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Vite</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">HTML5/CSS3</span>
+</div>
+</div>
+<!-- Backend -->
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-3">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="dns">dns</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Backend</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Node.js</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Express.js</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Python</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">FastAPI</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Django</span>
+</div>
+</div>
+<!-- Database & Tools -->
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-4">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Infrastructure</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">MongoDB</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">SQL/SQLite</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Git &amp; GitHub</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">Vercel · Render</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">WebSockets</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full text-sm">JWT Auth</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievements Section -->
+<section class="py-section-gap bg-surface-container-low" id="achievements">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="text-center mb-16 reveal">
+<h2 class="font-headline-lg text-headline-lg">Achievements</h2>
+<p class="text-on-surface-variant mt-4">Milestones earned by building, not just studying.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-1">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary text-2xl">🏆</div>
+<h3 class="font-headline-md text-headline-md mb-2">HEC GenAI Hackathon — Cohort 2</h3>
+<p class="text-on-surface-variant text-sm">Selected among a national field to design, build, and ship a live agentic AI SaaS MVP — ClaimPilot AI — in just 48 hours.</p>
+</div>
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-2">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary text-2xl">🥇</div>
+<h3 class="font-headline-md text-headline-md mb-2">Top Performer — Generative AI</h3>
+<p class="text-on-surface-variant text-sm">Recognized as a Top Performer in the Generative AI Application Developer track by ULEFUSA, March 2026.</p>
+</div>
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-3">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary text-2xl">🦷</div>
+<h3 class="font-headline-md text-headline-md mb-2">Real Client, Live in Production</h3>
+<p class="text-on-surface-variant text-sm">Booking system built for Family Medical And Dental Care is actively used to manage real patient appointments.</p>
+</div>
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-4">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary text-2xl">📜</div>
+<h3 class="font-headline-md text-headline-md mb-2">30+ Industry Certifications</h3>
+<p class="text-on-surface-variant text-sm">Credentialed by Meta, Google, and IBM across full-stack development, AI, and prompt engineering.</p>
+</div>
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-5">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary text-2xl">🎓</div>
+<h3 class="font-headline-md text-headline-md mb-2">3.43 CGPA</h3>
+<p class="text-on-surface-variant text-sm">Maintaining a strong academic record at Women University Multan while shipping six production-grade applications.</p>
+</div>
+<div class="glass-card p-stack-lg rounded-3xl reveal reveal-delay-5">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 text-primary text-2xl">🚀</div>
+<h3 class="font-headline-md text-headline-md mb-2">6 Deployed Projects</h3>
+<p class="text-on-surface-variant text-sm">Every project shipped end-to-end with a live URL and real users — not left sitting in a repo.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-section-gap bg-surface" id="work">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="flex justify-between items-end mb-12 reveal">
+<div>
+<h2 class="font-headline-lg text-headline-lg">Selected Projects</h2>
+<p class="text-on-surface-variant mt-2">Real-world applications and award-winning solutions.</p>
+</div>
+<div class="hidden md:block">
+<a class="text-primary font-bold flex items-center gap-2 hover:underline underline-offset-8" href="https://github.com/asmashahzadi764-alt" target="_blank">
+                            View GitHub
+                            <span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+
+            <!-- ===== FEATURED HACKATHON PROJECT — kept on top, separated from the grid ===== -->
+<div class="reveal">
+<div class="relative glass-card rounded-3xl overflow-hidden border-2 border-primary/30 shadow-xl mb-16 grid md:grid-cols-2">
+<div class="absolute top-5 left-5 z-10 flex items-center gap-2 bg-primary text-on-primary px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+<span>🏆</span> HEC GenAI Hackathon — Cohort 2
+</div>
+<div class="aspect-video md:aspect-auto relative overflow-hidden img-wrap">
+<img class="w-full h-full object-cover" alt="ClaimPilot AI app screenshot" src="assets/claimpilot.jpg" onerror="this.parentElement.classList.add('img-empty')"/>
+<div class="img-fallback">
+<span class="text-5xl">🚗</span>
+<small class="text-on-surface-variant text-xs px-4 text-center">Save screenshot as assets/claimpilot.jpg</small>
+</div>
+</div>
+<div class="p-8 md:p-10 flex flex-col justify-center">
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-3">Featured · AI SaaS</span>
+<h3 class="font-headline-lg text-headline-lg mb-3">ClaimPilot AI</h3>
+<p class="text-on-surface-variant mb-4">Agentic auto-insurance surveyor built at the HEC Generative AI Hackathon Cohort-2. Upload a crash photo — AI localizes damage, generates an itemized repair estimate in PKR, and outputs a fraud confidence score. Replaces manual surveys that take days with an instant digital workflow.</p>
+<p class="text-on-surface-variant text-sm mb-6"><strong class="text-on-surface">My role:</strong> Built the complete React frontend — responsive UI, image upload flow, base64 encoding, dynamic JSON data mapping from the AI backend, and Vercel deployment.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">React</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">FastAPI</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">LangChain</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Llama-4 Vision via Groq</span>
+</div>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-3 bg-surface-container rounded-lg font-label-md hover:bg-surface-variant transition-colors" href="https://github.com/samiyashahzad/claimpilotai" target="_blank">Code</a>
+<a class="flex-1 text-center py-3 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors" href="https://claimpilotai.vercel.app" target="_blank">Live Demo</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 2 -->
+<div class="group glass-card overflow-hidden rounded-3xl hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal reveal-delay-1">
+<div class="aspect-video relative overflow-hidden img-wrap">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Family Medical And Dental Care website screenshot" src="assets/family-dental.jpg" onerror="this.parentElement.classList.add('img-empty')"/>
+<div class="img-fallback">
+<span class="text-4xl">🦷</span>
+<small class="text-on-surface-variant text-xs px-4 text-center">assets/family-dental.jpg</small>
+</div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 text-on-primary px-3 py-1 rounded-lg text-xs font-bold shadow-lg">Healthcare · Real Client</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Family Medical And Dental Care</h3>
+<p class="text-on-surface-variant text-sm mb-4">Full-stack booking system live for a real dental &amp; medical clinic in Multan.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Node.js</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Express</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">JWT</span>
+</div>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-2 bg-surface-container rounded-lg font-label-md hover:bg-surface-variant transition-colors" href="https://github.com/asmashahzadi764-alt/Family-medical-and-dental-care-" target="_blank">Code</a>
+<a class="flex-1 text-center py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors" href="https://family-medical-and-dental-care.vercel.app" target="_blank">Live Demo</a>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="group glass-card overflow-hidden rounded-3xl hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal reveal-delay-2">
+<div class="aspect-video relative overflow-hidden img-wrap">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="iShop e-commerce screenshot" src="assets/ishop.jpg" onerror="this.parentElement.classList.add('img-empty')"/>
+<div class="img-fallback">
+<span class="text-4xl">🛒</span>
+<small class="text-on-surface-variant text-xs px-4 text-center">assets/ishop.jpg</small>
+</div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 text-on-primary px-3 py-1 rounded-lg text-xs font-bold shadow-lg">E-Commerce</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-headline-md mb-2">iShop</h3>
+<p class="text-on-surface-variant text-sm mb-4">Full-stack e-commerce storefront with secure admin dashboard and JWT auth.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">React</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">MongoDB</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Node.js</span>
+</div>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-2 bg-surface-container rounded-lg font-label-md hover:bg-surface-variant transition-colors" href="https://github.com/asmashahzadi764-alt/ishop" target="_blank">Code</a>
+<a class="flex-1 text-center py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors" href="https://ishop-nu.vercel.app" target="_blank">Live Demo</a>
+</div>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="group glass-card overflow-hidden rounded-3xl hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal reveal-delay-3">
+<div class="aspect-video relative overflow-hidden img-wrap">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Restaurant website screenshot" src="assets/restaurant.jpg" onerror="this.parentElement.classList.add('img-empty')"/>
+<div class="img-fallback">
+<span class="text-4xl">🍽️</span>
+<small class="text-on-surface-variant text-xs px-4 text-center">assets/restaurant.jpg</small>
+</div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 text-on-primary px-3 py-1 rounded-lg text-xs font-bold shadow-lg">Django · Web</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Restaurant Website</h3>
+<p class="text-on-surface-variant text-sm mb-4">Responsive restaurant site with dynamic menu, reviews, and integrated contact page.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Python</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Django</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">CSS3</span>
+</div>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-2 bg-surface-container rounded-lg font-label-md hover:bg-surface-variant transition-colors" href="https://github.com/asmashahzadi764-alt/my-django-site" target="_blank">Code</a>
+<a class="flex-1 text-center py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors" href="https://my-django-site-e3kw.onrender.com" target="_blank">Live Demo</a>
+</div>
+</div>
+</div>
+</div>
+
+            <!-- Last row: Project Management Tool + IBA Chatbot, wider cards, no leftover empty slot -->
+<div class="grid md:grid-cols-2 gap-8 mt-8">
+<div class="group glass-card overflow-hidden rounded-3xl hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal reveal-delay-4 md:flex">
+<div class="aspect-video md:aspect-auto md:w-2/5 relative overflow-hidden img-wrap">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Project Management Tool screenshot" src="assets/pm-tool.jpg" onerror="this.parentElement.classList.add('img-empty')"/>
+<div class="img-fallback">
+<span class="text-4xl">🗂️</span>
+<small class="text-on-surface-variant text-xs px-4 text-center">assets/pm-tool.jpg</small>
+</div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 text-on-primary px-3 py-1 rounded-lg text-xs font-bold shadow-lg">Real-time</span>
+</div>
+</div>
+<div class="p-8 md:w-3/5 flex flex-col justify-center">
+<h3 class="font-headline-md text-headline-md mb-2">Project Management Tool</h3>
+<p class="text-on-surface-variant text-sm mb-4">Trello/Asana-inspired Kanban platform with real-time updates via Socket.io for teams.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Socket.io</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">React</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Node.js</span>
+</div>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-2 bg-surface-container rounded-lg font-label-md hover:bg-surface-variant transition-colors" href="https://github.com/asmashahzadi764-alt/Project-Management-Tool" target="_blank">Code</a>
+<a class="flex-1 text-center py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors" href="https://project-management-tool-six-olive.vercel.app" target="_blank">Live Demo</a>
+</div>
+</div>
+</div>
+<div class="group glass-card overflow-hidden rounded-3xl hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal reveal-delay-5 md:flex">
+<div class="aspect-video md:aspect-auto md:w-2/5 relative overflow-hidden img-wrap">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="IBA Sukkur AI Chatbot screenshot" src="assets/iba-chatbot.jpg" onerror="this.parentElement.classList.add('img-empty')"/>
+<div class="img-fallback">
+<span class="text-4xl">🤖</span>
+<small class="text-on-surface-variant text-xs px-4 text-center">assets/iba-chatbot.jpg</small>
+</div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 text-on-primary px-3 py-1 rounded-lg text-xs font-bold shadow-lg">AI · Team Project</span>
+</div>
+</div>
+<div class="p-8 md:w-3/5 flex flex-col justify-center">
+<h3 class="font-headline-md text-headline-md mb-2">IBA Sukkur AI Chatbot</h3>
+<p class="text-on-surface-variant text-sm mb-4">RAG-powered chatbot for IBA Sukkur — built the full React frontend and API integration.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">FAISS</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">FastAPI</span>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-surface-container px-2 py-1 rounded">React</span>
+</div>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-2 bg-surface-container rounded-lg font-label-md hover:bg-surface-variant transition-colors" href="https://github.com/asmashahzadi764-alt/IBA-chatbot" target="_blank">Code</a>
+<a class="flex-1 text-center py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary/90 transition-colors" href="https://iba-chat.vercel.app" target="_blank">Live Demo</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience + Education Section -->
+<section class="py-section-gap bg-surface-container-low" id="experience">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="grid lg:grid-cols-2 gap-16">
+<div>
+<div class="mb-10 reveal">
+<span class="text-primary font-bold tracking-widest uppercase text-sm">Experience</span>
+<h2 class="font-headline-lg text-headline-lg mt-2">Work Experience</h2>
+</div>
+<div class="space-y-6">
+<div class="glass-card p-6 rounded-2xl reveal reveal-delay-1">
+<div class="flex justify-between items-start gap-3">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-primary">2026</p>
+<h3 class="font-headline-md text-headline-md mt-1">Mobile App Development with Flutter</h3>
+<p class="text-on-surface-variant text-sm mt-1">Excelerate · Remote Internship</p>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary px-2 py-1 rounded-full whitespace-nowrap">Completed</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl reveal reveal-delay-2">
+<div class="flex justify-between items-start gap-3">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-primary">Jan 2026 – Feb 2026</p>
+<h3 class="font-headline-md text-headline-md mt-1">Full-Stack Developer Intern</h3>
+<p class="text-on-surface-variant text-sm mt-1">CodeAlpha · Remote</p>
+<p class="text-on-surface-variant text-sm mt-2">Built the iShop e-commerce platform and a real-time Project Management Tool using React, Node.js, MongoDB &amp; Socket.io.</p>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary px-2 py-1 rounded-full whitespace-nowrap">Completed</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl reveal reveal-delay-3">
+<div class="flex justify-between items-start gap-3">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-primary">Jan 2024 – Present</p>
+<h3 class="font-headline-md text-headline-md mt-1">Full-Stack Engineer</h3>
+<p class="text-on-surface-variant text-sm mt-1">Self-employed · Remote</p>
+<p class="text-on-surface-variant text-sm mt-2">Designed and developed responsive web applications for real clients, building end-to-end projects and practicing independent Git/GitHub workflows.</p>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary px-2 py-1 rounded-full whitespace-nowrap">Current</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="mb-10 reveal">
+<span class="text-primary font-bold tracking-widest uppercase text-sm">Education</span>
+<h2 class="font-headline-lg text-headline-lg mt-2">Academic Background</h2>
+</div>
+<div class="space-y-6">
+<div class="glass-card p-6 rounded-2xl reveal reveal-delay-1">
+<p class="text-xs font-bold uppercase tracking-widest text-primary">2023 – 2027</p>
+<h3 class="font-headline-md text-headline-md mt-1">BS Information Technology</h3>
+<p class="text-on-surface-variant text-sm mt-1">Women University Multan</p>
+<p class="text-on-surface-variant text-sm mt-2">CGPA 3.43 · Final Year · Coursework: Software Engineering, IT Infrastructure, Databases, Automata Theory, Network Security.</p>
+</div>
+<div class="glass-card p-6 rounded-2xl reveal reveal-delay-2">
+<p class="text-xs font-bold uppercase tracking-widest text-primary">Aug 2024 – Present</p>
+<h3 class="font-headline-md text-headline-md mt-1">Full-Stack Engineer Certificate</h3>
+<p class="text-on-surface-variant text-sm mt-1">Meta via Coursera</p>
+<p class="text-on-surface-variant text-sm mt-2">Meta Front-End, Back-End &amp; Full-Stack Engineer specializations — React, Django, APIs, databases, version control.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Certificates Section -->
+<section class="py-section-gap bg-surface" id="certs">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="text-center mb-16 reveal">
+<h2 class="font-headline-lg text-headline-lg">Top Certifications</h2>
+<p class="text-on-surface-variant mt-4">Key credentials from industry leaders.
+                    <a class="text-primary font-bold hover:underline" href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank" rel="noopener">View all 30+ on LinkedIn →</a>
+</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 reveal reveal-delay-1">
+<div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">M</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">Meta Full-Stack Engineer Certificate</h4>
+<p class="text-on-surface-variant text-xs mt-1">Coursera · Jul 2025</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 reveal reveal-delay-1">
+<div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">M</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">Meta Front-End Developer Specialization</h4>
+<p class="text-on-surface-variant text-xs mt-1">Coursera · Jul 2025</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 reveal reveal-delay-2">
+<div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">M</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">Meta Back-End Developer Specialization</h4>
+<p class="text-on-surface-variant text-xs mt-1">Coursera · Jul 2025</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 reveal reveal-delay-2">
+<div class="w-11 h-11 rounded-xl bg-tertiary/10 text-tertiary flex items-center justify-center font-bold">G</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">Google AI Essentials</h4>
+<p class="text-on-surface-variant text-xs mt-1">Google · Dec 2025</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 reveal reveal-delay-3">
+<div class="w-11 h-11 rounded-xl bg-tertiary/10 text-tertiary flex items-center justify-center font-bold">G</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">Discover the Art of Prompting</h4>
+<p class="text-on-surface-variant text-xs mt-1">Google · Dec 2025</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 reveal reveal-delay-3">
+<div class="w-11 h-11 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">IBM</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">JavaScript Programming Essentials</h4>
+<p class="text-on-surface-variant text-xs mt-1">IBM · Jul 2025</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 reveal reveal-delay-4">
+<div class="w-11 h-11 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">IBM</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">Getting Started with Git and GitHub</h4>
+<p class="text-on-surface-variant text-xs mt-1">IBM · Jun 2025</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-4 border-2 border-primary/40 reveal reveal-delay-4">
+<div class="w-11 h-11 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold">U</div>
+<div>
+<h4 class="font-bold text-sm leading-snug">Generative AI Application Developer <span class="text-primary">🏆 Top Performer</span></h4>
+<p class="text-on-surface-variant text-xs mt-1">ULEFUSA · Mar 2026</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Connect Section -->
+<section class="py-section-gap relative overflow-hidden" id="connect">
+<div class="absolute inset-0 z-0 opacity-5">
+
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10 text-center reveal">
+<div class="inline-flex w-20 h-20 bg-primary/10 rounded-full items-center justify-center mb-8 text-primary float-anim">
+<span class="material-symbols-outlined text-4xl" data-icon="send">send</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl mb-4">Let's build something extraordinary.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    Open to full-time, remote, and internship opportunities in full-stack and AI development. If you're looking for a developer who ships, I'm just an email away.
+                </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<a class="bg-primary text-on-primary px-10 py-5 rounded-2xl font-label-md text-xl hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20 flex items-center gap-3" href="mailto:asmashahzadi764@gmail.com">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+                        asmashahzadi764@gmail.com
+                    </a>
+</div>
+<div class="flex justify-center gap-8 mt-16">
+<a class="group flex flex-col items-center gap-2" href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank">
+<div class="w-14 h-14 rounded-full glass-card flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="share">share</span>
+</div>
+<span class="font-label-md text-xs uppercase tracking-widest text-on-surface-variant">LinkedIn</span>
+</a>
+<a class="group flex flex-col items-center gap-2" href="https://github.com/asmashahzadi764-alt" target="_blank">
+<div class="w-14 h-14 rounded-full glass-card flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="terminal">terminal</span>
+</div>
+<span class="font-label-md text-xs uppercase tracking-widest text-on-surface-variant">GitHub</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface py-stack-lg border-t border-outline/5">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-md text-headline-md text-primary font-bold">ASMA SHAHZADI</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 opacity-80">© 2026 Asma Shahzadi.</p>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="https://github.com/asmashahzadi764-alt" target="_blank">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity font-body-md" href="#home">Back to Top</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container-lowest/80 backdrop-blur-xl border-t border-outline/10 shadow-[0_-8px_32px_rgba(0,0,0,0.04)] px-2 pb-safe flex justify-around items-center h-16">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-200" href="#home">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant rounded-full transition-all duration-200" href="#about">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-[10px]">About</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant rounded-full transition-all duration-200" href="#work">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span class="font-label-md text-[10px]">Work</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant rounded-full transition-all duration-200" href="#experience">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-label-md text-[10px]">Log</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant rounded-full transition-all duration-200" href="#connect">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-label-md text-[10px]">Connect</span>
+</a>
+</nav>
+<script>
+        // Smooth Active State Navigation Logic
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('header nav a');
+        const mobileLinks = document.querySelectorAll('nav.fixed.bottom-0 a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary');
+                    link.classList.remove('text-on-surface-variant');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.classList.remove('bg-primary-container', 'text-on-primary-container');
+                link.classList.add('text-on-surface-variant');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('bg-primary-container', 'text-on-primary-container');
+                    link.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+
+        // ===== Scroll reveal animation =====
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        // ===== Typewriter effect =====
+        const roles = ['React & Node.js Developer', 'AI-Integrated Web Apps', 'Full-Stack Problem Solver', 'Ships to Production'];
+        const twEl = document.getElementById('typewriter');
+        let ri = 0, ci = 0, deleting = false;
+        function typeLoop() {
+            const word = roles[ri];
+            if (!deleting) {
+                ci++;
+                twEl.textContent = word.slice(0, ci);
+                if (ci === word.length) { deleting = true; setTimeout(typeLoop, 1500); return; }
+            } else {
+                ci--;
+                twEl.textContent = word.slice(0, ci);
+                if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+            }
+            setTimeout(typeLoop, deleting ? 30 : 60);
+        }
+        typeLoop();
+
+        // ===== Count-up stats =====
+        const statEls = document.querySelectorAll('.stat-num');
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = parseFloat(el.dataset.target);
+                const decimals = parseInt(el.dataset.decimals || '0', 10);
+                const duration = 1200;
+                const start = performance.now();
+                function tick(now) {
+                    const p = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - p, 3);
+                    const val = target * eased;
+                    el.textContent = val.toFixed(decimals);
+                    if (p < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+                countObserver.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        statEls.forEach(el => countObserver.observe(el));
+    </script>
+</body></html>
