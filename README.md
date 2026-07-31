@@ -6,7 +6,7 @@
 
 Shipped and deployed, not just demoed.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-4E635A?style=for-the-badge&logo=vercel&logoColor=white)](https://asmashahzadi.vercel.app)
+[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-4E635A?style=for-the-badge&logo=vercel&logoColor=white)](https://personal-portfolio-5umb-lap3iuyut-asmashahzadi764-alts-projects.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/asmashahzadi764-alt)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/asma-shahzadi-313291376/)
 [![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:asmashahzadi764@gmail.com)
