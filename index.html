@@ -198,6 +198,25 @@ body{background:radial-gradient(1300px 640px at 50% -8%,#24451A,#0B1708 68%) no-
 .sh h2,.cta-card h2{font-weight:800;letter-spacing:-.035em}
 @media (max-width:700px){.laptop{height:420px}.st{font-size:14px;padding:8px 12px}.s2{display:none}.s1{left:12px;bottom:12px}.s3{right:12px;bottom:12px}}
 </style>
+<style>
+.hero2{position:relative;padding-top:56px;padding-bottom:0;min-height:780px}
+.hero-copy{position:relative;z-index:2;max-width:640px;padding-bottom:88px}
+.hero2 .giant{font-size:clamp(3.6rem,9.2vw,8.6rem);line-height:.9;margin:24px 0 0}
+.hero2 .subrow{display:block;margin-top:14px}
+.hero2 .role{font-size:clamp(2.6rem,6.4vw,5.6rem)}
+.hero2 .lead{margin:18px 0 0;max-width:27em}
+.cut{position:absolute;right:-8px;bottom:0;width:min(600px,50%);z-index:1}
+.cut::before{content:"";position:absolute;inset:6% -14% 0 -14%;background:radial-gradient(closest-side,rgba(160,220,50,.34),rgba(46,125,58,.16) 55%,transparent 75%);z-index:-1}
+.cut img{display:block;width:100%;height:auto;filter:grayscale(1) contrast(1.08) brightness(1.04);-webkit-mask-image:linear-gradient(#000 84%,transparent);mask-image:linear-gradient(#000 84%,transparent)}
+.cut .s1{left:-14%;bottom:30%}.cut .s2{right:-4%;top:14%}.cut .s3{right:-2%;bottom:9%}
+@media (max-width:1000px){
+  .hero2{min-height:0}
+  .hero-copy{padding-bottom:24px;max-width:none}
+  .cut{position:relative;right:auto;margin:0 auto;width:min(480px,100%)}
+  .cut .s1{left:0}.cut .s2{right:0}.cut .s3{right:0}
+}
+@media (max-width:700px){.cut .s2{display:none}.cut .s1{bottom:22%}}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
@@ -208,15 +227,17 @@ body{background:radial-gradient(1300px 640px at 50% -8%,#24451A,#0B1708 68%) no-
 
 <main>
 <div class="wrap hero2">
-  <span class="status"><i></i>Open to freelance, remote and internship work</span>
-  <h1 class="giant">Asma Shahzadi</h1>
-  <div class="subrow">
-    <p class="role">Full Stack Developer</p>
-    <p class="lead">I build React, Node.js and FastAPI products with AI built in, ship them to real clients, and work as the AI-native full-stack developer on the official PWDP website for the Government of Punjab.</p>
+  <div class="hero-copy">
+    <span class="status"><i></i>Open to freelance, remote and internship work</span>
+    <h1 class="giant">Asma<br>Shahzadi</h1>
+    <div class="subrow">
+      <p class="role">Full Stack Developer</p>
+      <p class="lead">I build React, Node.js and FastAPI products with AI built in, ship them to real clients, and work as the AI-native full-stack developer on the official PWDP website for the Government of Punjab.</p>
+    </div>
+    <div class="cta"><a class="btn hot" href="#work">See my work</a><a class="btn ghost" href="resume.pdf" download>Download resume</a></div>
   </div>
-  <div class="cta"><a class="btn hot" href="#work">See my work</a><a class="btn ghost" href="resume.pdf" download>Download resume</a></div>
-  <div class="laptop">
-    <img src="assets/profile-photo.jpg" alt="Portrait of Asma Shahzadi" width="450" height="650">
+  <div class="cut">
+    <img src="assets/profile-photo.webp" alt="Portrait of Asma Shahzadi" width="690" height="996">
     <div class="st s1"><b>3</b> live client sites in Multan</div>
     <div class="st s2"><b>HEC GenAI</b> Hackathon, Cohort 2</div>
     <div class="st s3"><b>PWDP</b> Government of Punjab</div>
