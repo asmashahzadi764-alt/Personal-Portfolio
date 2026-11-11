@@ -1,12 +1,12 @@
 <div align="center">
 
-# 🌿 Asma Shahzadi — Portfolio
+# Asma Shahzadi | Portfolio
 
-### Full-Stack Developer · React, Node.js &amp; AI-Integrated Web Applications
+### Full-Stack Developer · React, Node.js & AI-Integrated Web Applications
 
 Shipped and deployed, not just demoed.
 
-[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-4E635A?style=for-the-badge&logo=vercel&logoColor=white)](https://personal-portfolio-5umb-lap3iuyut-asmashahzadi764-alts-projects.vercel.app/)
+[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-D6F23A?style=for-the-badge&logo=vercel&logoColor=0B1708&labelColor=0B1708)](https://personal-portfolio-5umb-lap3iuyut-asmashahzadi764-alts-projects.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/asmashahzadi764-alt)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/asma-shahzadi-313291376/)
 [![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:asmashahzadi764@gmail.com)
@@ -14,10 +14,9 @@ Shipped and deployed, not just demoed.
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-![Status](https://img.shields.io/badge/Status-Live-4E635A?style=for-the-badge)
-![Made with Love](https://img.shields.io/badge/Made%20with-%E2%9D%A4-b99693?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Live-D6F23A?style=for-the-badge&labelColor=0B1708)
 
 </div>
 
@@ -25,63 +24,66 @@ Shipped and deployed, not just demoed.
 
 ## 📌 About
 
-This is my personal portfolio — a single-page site built to showcase real, deployed projects rather than class assignments. It covers my background as a final-year BS Information Technology student, an agentic AI hackathon win, six shipped applications, my professional experience, and 30+ industry certifications from Meta, Google, and IBM.
+This is my personal portfolio: a single-page site built to show real, deployed projects instead of class assignments. It covers my background as a final-year BS Information Technology student, a GenAI hackathon project, an Urdu-first AI booking agent, client websites for real businesses in Multan, my professional experience, and certifications from Meta, Google and IBM.
 
 ## ✨ Features
 
-- 🏆 **Featured Hackathon Project** — ClaimPilot AI stands out on its own, separate from the regular project grid
-- 🎯 **Achievements Section** — hackathon wins, top-performer certifications, and real client deployments
-- 💼 **Work, Experience &amp; Education Timelines** — clean, chronological layout
-- 📜 **Certificates Grid** — credentials from Meta, Google, IBM, and ULEFUSA
-- 🎬 **Scroll Animations** — fade-up reveals, animated count-up stats, and a typewriter role line
-- 📱 **Fully Responsive** — desktop top nav + mobile bottom nav
-- 🖼️ **Graceful Image Fallbacks** — clean icon placeholders show up if a screenshot hasn't been added yet
+- 🖥️ **Live Previews:** a tabbed 3D browser window that shows my deployed sites (ClaimPilot AI, BodyTech Gym, Eco Car Workshop) running
+- 🤖 **AI Demos:** a scripted Urdu booking chat for Mulaqat and an animated ClaimPilot pipeline, from crash photo to fraud score
+- 🏆 **Featured Projects:** ClaimPilot AI (HEC GenAI Hackathon, Cohort 2), Mulaqat and my final year project, shown above the regular project grid
+- 🧊 **Glass Cards:** cursor-following glow and a light 3D tilt on every card
+- 🎬 **Motion:** scroll reveals, a tech marquee and a hero entrance, all switched off for visitors who prefer reduced motion
+- 💼 **Experience Timeline:** PWDP (Government of Punjab), Excelerate, CodeAlpha and freelance work
+- 📱 **Fully Responsive:** layouts for desktop, tablet and mobile
+- ♿ **Accessible:** skip link, visible keyboard focus and semantic headings
 
 ## 🛠️ Tech Stack
 
 | Layer | Tools |
 |---|---|
-| Markup &amp; Styling | HTML5, Tailwind CSS (CDN) |
-| Interactivity | Vanilla JavaScript (IntersectionObserver, typewriter, count-up) |
-| Fonts | Geist Sans, Geist Mono, Material Symbols |
+| Markup & Styling | HTML5 and plain CSS (no framework, no build step) |
+| Interactivity | One small vanilla JavaScript file (tabs, tilt, demo chat, IntersectionObserver reveals) |
+| Fonts | Schibsted Grotesk, Instrument Serif, Onest, Noto Nastaliq Urdu (Google Fonts) |
 | Hosting | Vercel |
+
+Live previews are iframes of the deployed sites, so those sites must allow embedding.
 
 ## 📂 Folder Structure
 
 ```
 ├── index.html          # main portfolio page
-├── resume.pdf           # downloadable resume (add your own)
+├── resume.pdf          # downloadable resume
 └── assets/
     ├── profile-photo.jpg
-    ├── claimpilot.jpg
-    ├── family-dental.jpg
     ├── ishop.jpg
     ├── iba-chatbot.jpg
-    ├── pm-tool.jpg
-    └── restaurant.jpg
+    └── pm-tool.jpg
 ```
 
 ## 🚀 Getting Started
 
 1. Clone the repo
    ```bash
-   git clone https://github.com/asmashahzadi764-alt/portfolio.git
+   git clone https://github.com/asmashahzadi764-alt/Personal-Portfolio.git
    ```
-2. Add your own images to `assets/` and a `resume.pdf` in the root (see `assets/README.txt` for exact filenames).
-3. Open `index.html` in your browser — no build step required.
+2. Open `index.html` in your browser. There is nothing to install and no build step.
 
 ## 🌐 Deployment
 
-Deployed on **Vercel** — every push to `main` redeploys automatically. To deploy your own copy:
+Deployed on **Vercel**. Every push to `main` redeploys automatically. To deploy your own copy:
 
 ```bash
 npm i -g vercel
 vercel
 ```
 
+## ➕ Adding a New Project
+
+Copy one `<article class="gc p rv">` block inside `<div class="tiles">`, then change the name, description, stack and links. Point the `<iframe>` at the live site, or use an `<img>` from `assets/`.
+
 ## 🖥️ Sections
 
-`Home` → `About` → `Achievements` → `Tech Stack` → `Work` → `Experience &amp; Education` → `Certificates` → `Connect`
+`Home` → `Live Demos` → `Work` → `Skills` → `Experience & Education` → `Contact`
 
 ## 📬 Connect
 
@@ -97,6 +99,6 @@ vercel
 
 <div align="center">
 
-**© 2026 Asma Shahzadi** · Built with 🌿 and a lot of shipped code.
+**© 2026 Asma Shahzadi** · Built with shipped code.
 
 </div>
