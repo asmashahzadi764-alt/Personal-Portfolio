@@ -264,6 +264,25 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
   .cut img{height:auto}
 }
 </style>
+<style>
+.hero2{align-items:center;padding-top:0;padding-bottom:clamp(8px,3vh,32px)}
+.hero2 .lead{color:#D8DBE8}
+.orbit{filter:drop-shadow(0 0 5px rgba(214,242,58,.75))}
+.wires path{stroke:rgba(214,242,58,.85);stroke-width:2;stroke-dasharray:5 8}
+.orbit circle{r:5.5px}
+@media (max-width:1000px){.hero2{padding-top:34px}}
+.chips span{white-space:nowrap}
+.p-side .pad{display:flex;flex-direction:column;height:100%}
+.p-side .plinks{margin-top:auto}
+.mini{display:flex;flex-direction:column;gap:8px;margin:14px 0 6px}
+.mini .cm{font-size:1.02rem;line-height:2.2;animation:none}
+.mini .cm.b{color:#0B1708}
+</style>
+<style>
+.hero2 .giant{font-size:clamp(2.6rem,min(8.8vw,15vh),8rem)}
+.hero2 .role{font-size:clamp(2rem,min(6.2vw,10vh),5.4rem)}
+.hero2 .lead{max-width:33em}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
@@ -359,6 +378,7 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
           <span class="tag">AI agent</span>
           <h3>Mulaqat</h3>
           <p style="color:#F1F1F8">An Urdu and Roman Urdu receptionist that books appointments by calling tools. The demo uses a dental clinic's public listing data and is not affiliated with the clinic.</p>
+          <div class="mini" aria-hidden="true"><div class="cm u" lang="ur">مجھے کل شام کی اپائنٹمنٹ چاہیے</div><div class="cm b" lang="ur">جی ضرور، کل شام پانچ بجے کا وقت خالی ہے۔</div></div>
           <p class="stack">FastAPI, React, Gemini API</p>
           <div class="plinks"><a class="lk" href="https://github.com/asmashahzadi764-alt/mulaqat-ai-booking-agent" target="_blank" rel="noopener">Code</a></div>
         </div>
