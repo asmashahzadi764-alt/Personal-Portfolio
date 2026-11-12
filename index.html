@@ -283,6 +283,22 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
 .hero2 .role{font-size:clamp(2rem,min(6.2vw,10vh),5.4rem)}
 .hero2 .lead{max-width:33em}
 </style>
+<style>
+/* 3D name: letters flip in on load, then the name tilts and casts depth toward the cursor */
+.giant .w{display:inline-block;white-space:nowrap}
+.giant .ch{display:inline-block;transform-origin:50% 100%;animation:flip .95s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i)*65ms + .1s)}
+@keyframes flip{from{opacity:0;transform:perspective(600px) rotateX(-95deg) translateY(36px)}to{opacity:1;transform:none}}
+.giant{transform-origin:0 60%;transform:perspective(1000px) rotateY(var(--gy,0deg)) rotateX(var(--gx,0deg));transition:transform .25s ease-out;text-shadow:1px 1px 0 rgba(214,242,58,.55),2px 2px 0 rgba(214,242,58,.42),3px 3px 0 rgba(214,242,58,.3),4px 4px 0 rgba(214,242,58,.2),5px 5px 0 rgba(214,242,58,.12),8px 10px 22px rgba(0,0,0,.55)}
+@media (prefers-reduced-motion:reduce){.giant .ch{animation:none}.giant{transform:none;transition:none}}
+</style>
+<style>
+/* paint safety: no blur layers on small floating elements, so nothing can fail to paint */
+.top,.node,.btn.ghost,.status{-webkit-backdrop-filter:none;backdrop-filter:none}
+.top{background:rgba(11,23,8,.94)}
+.node{background:rgba(11,23,8,.86)}
+.btn.ghost{background:rgba(255,255,255,.08)}
+.status{background:rgba(255,255,255,.07)}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
@@ -295,7 +311,7 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
 <div class="wrap hero2">
   <div class="hero-copy">
     <span class="status"><i></i>Open to freelance, remote and internship work</span>
-    <h1 class="giant">Asma<br>Shahzadi</h1>
+    <h1 class="giant" id="name" aria-label="Asma Shahzadi"><span class="w"><span class="ch" style="--i:0" aria-hidden="true">A</span><span class="ch" style="--i:1" aria-hidden="true">s</span><span class="ch" style="--i:2" aria-hidden="true">m</span><span class="ch" style="--i:3" aria-hidden="true">a</span></span><br><span class="w"><span class="ch" style="--i:4" aria-hidden="true">S</span><span class="ch" style="--i:5" aria-hidden="true">h</span><span class="ch" style="--i:6" aria-hidden="true">a</span><span class="ch" style="--i:7" aria-hidden="true">h</span><span class="ch" style="--i:8" aria-hidden="true">z</span><span class="ch" style="--i:9" aria-hidden="true">a</span><span class="ch" style="--i:10" aria-hidden="true">d</span><span class="ch" style="--i:11" aria-hidden="true">i</span></span></h1>
     <div class="subrow">
       <p class="role">Full Stack Developer</p>
       <p class="lead">I build React, Node.js and FastAPI products with AI built in, ship them to real clients, and work as the AI-native full-stack developer on the official PWDP website for the Government of Punjab.</p>
@@ -498,6 +514,15 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
     if(t)document.getElementById('work').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
   })});
   document.getElementById('fclear').addEventListener('click',function(){apply('')});
+})();
+</script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!matchMedia('(hover:hover)').matches)return;
+  var hero=document.querySelector('.hero2'),n=document.getElementById('name');
+  hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    n.style.setProperty('--gy',(x*14)+'deg');n.style.setProperty('--gx',(-y*10)+'deg')});
+  hero.addEventListener('pointerleave',function(){n.style.setProperty('--gy','0deg');n.style.setProperty('--gx','0deg')});
 })();
 </script>
 </body>
