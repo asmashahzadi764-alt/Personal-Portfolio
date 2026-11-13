@@ -299,6 +299,76 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
 .btn.ghost{background:rgba(255,255,255,.08)}
 .status{background:rgba(255,255,255,.07)}
 </style>
+<style>
+.stackx{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.slabs{display:flex;flex-direction:column;gap:14px;transform:perspective(1100px) rotateY(-13deg) rotateX(4deg);transform-origin:left center}
+.slab{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 26px;border-radius:16px;border:1px solid var(--edge);background:rgba(255,255,255,.06);color:var(--text);font:700 1.15rem var(--display);text-align:left;cursor:pointer;box-shadow:0 8px 0 rgba(214,242,58,.16),0 22px 34px -14px rgba(0,0,0,.7);transition:transform .3s,background .3s,color .3s,box-shadow .3s}
+.slab small{font:500 14.5px var(--sans);color:var(--muted)}
+.slab:hover{transform:translateX(14px)}
+.slab[aria-selected=true]{background:var(--lime);color:#0B1708;transform:translateX(34px) translateZ(30px);box-shadow:0 8px 0 #8DA81C,0 26px 40px -12px rgba(214,242,58,.4)}
+.slab[aria-selected=true] small{color:#2c3a10}
+.pan{padding:40px 42px;min-height:380px;display:flex;flex-direction:column;justify-content:center}
+.pan h3{font-size:clamp(2rem,3.6vw,3rem);font-weight:800;letter-spacing:-.03em}
+.pcap{margin:12px 0 26px;color:#D8DBE8;font-size:19px;max-width:28em}
+.chips.big{gap:10px}
+.chips.big span{font-size:17.5px;padding:7px 20px;background:rgba(214,242,58,.08);border-color:rgba(214,242,58,.3)}
+.pan.swap #pt,.pan.swap #pc,.pan.swap #pch{animation:rise .45s both}
+@media (max-width:1000px){.stackx{grid-template-columns:1fr;gap:32px}.slabs{transform:none}.slab:hover,.slab[aria-selected=true]{transform:none}.pan{min-height:0;padding:30px}}
+@media (prefers-reduced-motion:reduce){.slabs{transform:none}.slab{transition:none}.pan.swap #pt,.pan.swap #pc,.pan.swap #pch{animation:none}}
+</style>
+<style>
+.stackx{grid-template-columns:1fr 1.05fr;gap:48px}
+.rt{min-width:0}
+.slabs{flex-direction:row;flex-wrap:wrap;gap:10px;transform:none;margin-bottom:22px}
+.slabs .slab,.slabs .slab:hover,.slabs .slab[aria-selected=true]{transform:none}
+.slab{padding:9px 20px;font-size:1rem;border-radius:999px;box-shadow:none}
+.slab small{display:none}
+.slab[aria-selected=true]{box-shadow:0 10px 30px -8px rgba(214,242,58,.5)}
+.pan{min-height:290px;padding:34px 36px}
+.scene{position:relative;height:400px;perspective:1200px;display:flex;align-items:center;justify-content:center;cursor:grab;touch-action:pan-y;user-select:none}
+.scene:active{cursor:grabbing}
+.scene::before{content:"";position:absolute;left:6%;right:6%;bottom:44px;height:80px;background:radial-gradient(closest-side,rgba(214,242,58,.38),transparent);filter:blur(12px)}
+.ring{--r:236px;position:relative;width:292px;height:184px;margin-top:-30px;transform-style:preserve-3d;transform:rotateX(-9deg) rotateY(var(--ry,0deg))}
+.face{position:absolute;inset:0;transform:rotateY(var(--a)) translateZ(var(--r));backface-visibility:hidden;border-radius:12px;overflow:hidden;border:1px solid var(--edge);background:#101018;box-shadow:0 22px 50px -10px rgba(0,0,0,.75)}
+.face img{width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none}
+.face span{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 8px;font:600 14.5px var(--sans);background:linear-gradient(transparent,rgba(0,0,0,.88))}
+.hint{position:absolute;bottom:0;left:0;right:0;text-align:center;color:var(--muted);font-size:15px;margin:0}
+@media (max-width:1000px){.stackx{grid-template-columns:1fr}.scene{height:340px}.ring{--r:190px;width:236px;height:150px}}
+</style>
+<style>
+.iso3d{--gap:56px;position:relative;height:440px;display:flex;align-items:center;justify-content:center;perspective:1500px}
+.iso{position:relative;width:250px;height:250px;margin-top:20px;transform-style:preserve-3d;transform:rotateX(calc(58deg + var(--ty,0deg))) rotateZ(calc(-40deg + var(--tz,0deg))) translateZ(calc(var(--gap)*-2.5));animation:isobob 6s ease-in-out infinite}
+@keyframes isobob{50%{margin-top:6px}}
+.plate{position:absolute;inset:0;transform-style:preserve-3d;transform:translateZ(calc(var(--n)*var(--gap)));border-radius:20px;border:1.5px solid rgba(214,242,58,.42);background:repeating-linear-gradient(0deg,transparent 0 24px,rgba(214,242,58,.15) 24px 25px),repeating-linear-gradient(90deg,transparent 0 24px,rgba(214,242,58,.15) 24px 25px),rgba(214,242,58,.05);box-shadow:0 0 30px rgba(214,242,58,.08);cursor:pointer;transition:transform .35s,background-color .35s,border-color .35s,box-shadow .35s}
+.plate:hover,.plate.on{transform:translateZ(calc(var(--n)*var(--gap) + 26px));border-color:var(--lime);background-color:rgba(214,242,58,.24);box-shadow:0 0 55px rgba(214,242,58,.5)}
+.lbl{position:absolute;left:100%;top:50%;margin-top:-14px;margin-left:16px;white-space:nowrap;transform-origin:0 50%;transform:rotateZ(calc(40deg - var(--tz,0deg))) rotateX(calc(-58deg - var(--ty,0deg)));font:600 15px/1.5 var(--sans);color:var(--text);background:rgba(11,23,8,.88);border:1px solid var(--edge);border-radius:999px;padding:2px 14px}
+.plate.on .lbl,.plate:hover .lbl{background:var(--lime);color:#0B1708;border-color:var(--lime)}
+.axis{position:absolute;left:calc(50% - 1px);top:50%;width:2px;height:calc(var(--gap)*5 + 40px);transform-origin:50% 0;transform:rotateX(90deg);background:linear-gradient(var(--lime),transparent);opacity:.7}
+.pkt{position:absolute;left:calc(50% - 8px);top:calc(50% - 8px);width:16px;height:16px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px var(--lime);animation:climb 3.4s ease-in-out infinite}
+@keyframes climb{0%{transform:translateZ(0);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateZ(calc(var(--gap)*5 + 30px));opacity:0}}
+.iso3d .hint{position:absolute;bottom:0;left:0;right:0;text-align:center;color:var(--muted);font-size:15px;margin:0}
+@media (max-width:1000px){.iso3d{--gap:46px;height:380px}.iso{width:210px;height:210px}}
+@media (prefers-reduced-motion:reduce){.iso,.pkt{animation:none}.plate{transition:none}}
+</style>
+<style>
+.iso3d{--gap:60px;height:480px}
+.plate:hover,.plate.on{transform:translateZ(calc(var(--n)*var(--gap) + 12px))}
+.slabs{gap:8px}
+.slab{padding:8px 16px;font-size:.95rem}
+@media (max-width:1000px){.iso3d{--gap:46px;height:380px}}
+</style>
+<style>
+.orb{position:relative;width:100%;max-width:560px;aspect-ratio:1;margin:0 auto}
+.orb canvas{position:absolute;inset:0;width:100%;height:100%}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:300;pointer-events:none;font-family:var(--display);line-height:1.15;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.core b{display:block;font-size:1.05rem;font-weight:800}
+.core span{color:var(--lime);font-size:.95rem;font-weight:600}
+.orbn{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;padding:5px 14px;border-radius:999px;border:1px solid var(--edge);background:rgba(11,23,8,.88);font:600 15px var(--sans);color:var(--text);cursor:pointer;will-change:transform,opacity;transition:background .25s,color .25s,border-color .25s,box-shadow .25s}
+.orbn::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.orbn.on{background:var(--lime);color:#0B1708;border-color:var(--lime);box-shadow:0 0 26px rgba(214,242,58,.55)}
+.orbn.on::before{background:#0B1708;box-shadow:none}
+.orbhint{text-align:center;color:var(--muted);font-size:15px;margin:4px 0 0}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
@@ -422,14 +492,8 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
 
 <section id="skills">
   <div class="wrap">
-    <div class="sh rv"><h2>Skills</h2><p class="note">The tools I have used in the projects above.</p></div>
-    <div class="sk">
-      <div class="gc rv"><h3>Languages</h3><div class="chips"><span>JavaScript</span><span>TypeScript</span><span>Python</span><span>HTML</span><span>CSS</span></div></div>
-      <div class="gc rv"><h3>Frontend</h3><div class="chips"><span>React</span><span>Next.js</span><span>Vite</span><span>Tailwind CSS</span></div></div>
-      <div class="gc rv"><h3>Backend</h3><div class="chips"><span>Node.js</span><span>Express</span><span>FastAPI</span><span>Django</span><span>REST APIs</span><span>WebSockets</span><span>JWT</span></div></div>
-      <div class="gc rv"><h3>Data and tools</h3><div class="chips"><span>MongoDB</span><span>SQLite</span><span>Git and GitHub</span><span>Vercel</span><span>Render</span></div></div>
-      <div class="gc rv"><h3>AI</h3><div class="chips"><span>LangChain</span><span>FAISS</span><span>RAG</span><span>Gemini API</span><span>Groq API</span><span>Prompt engineering</span></div></div>
-    </div>
+    <div class="sh rv"><h2>Skills</h2><p class="note">Hover a skill in orbit, or pick a tab, to see my tools.</p></div>
+    <div class="stackx"><div class="orb" id="orb" aria-hidden="true"><canvas id="orbc"></canvas><div class="core"><b>Full Stack</b><span>+ AI</span></div><span class="orbn" data-r="0" data-l="fe">React</span><span class="orbn" data-r="0" data-l="fe">Next.js</span><span class="orbn" data-r="0" data-l="fe">Tailwind CSS</span><span class="orbn" data-r="0" data-l="lang">JavaScript</span><span class="orbn" data-r="0" data-l="lang">TypeScript</span><span class="orbn" data-r="1" data-l="be">Node.js</span><span class="orbn" data-r="1" data-l="be">Express</span><span class="orbn" data-r="1" data-l="be">FastAPI</span><span class="orbn" data-r="1" data-l="be">Django</span><span class="orbn" data-r="1" data-l="db">MongoDB</span><span class="orbn" data-r="2" data-l="ai">LangChain</span><span class="orbn" data-r="2" data-l="ai">RAG</span><span class="orbn" data-r="2" data-l="ai">FAISS</span><span class="orbn" data-r="2" data-l="ai">Gemini API</span><span class="orbn" data-r="2" data-l="ship">Vercel</span><span class="orbn" data-r="2" data-l="lang">Python</span></div><p class="orbhint">Hover a skill to explore it. Move the mouse to tilt the system.</p><div class="rt"><div class="slabs rv" role="tablist" aria-label="Skill layers"><button class="slab" type="button" role="tab" data-k="fe" aria-selected="true">Frontend<small>6 tools</small></button><button class="slab" type="button" role="tab" data-k="be" aria-selected="false">Backend<small>7 tools</small></button><button class="slab" type="button" role="tab" data-k="db" aria-selected="false">Data<small>2 tools</small></button><button class="slab" type="button" role="tab" data-k="ai" aria-selected="false">AI<small>6 tools</small></button><button class="slab" type="button" role="tab" data-k="ship" aria-selected="false">Ship<small>3 tools</small></button><button class="slab" type="button" role="tab" data-k="lang" aria-selected="false">Languages<small>3 tools</small></button></div><div class="pan gc rv" id="pan" role="tabpanel"><h3 id="pt">Frontend</h3><p class="pcap" id="pc">Responsive interfaces for the client sites and AI tools above.</p><div class="chips big" id="pch"><span>React</span><span>Next.js</span><span>Vite</span><span>Tailwind CSS</span><span>HTML</span><span>CSS</span></div></div></div></div>
   </div>
 </section>
 
@@ -523,6 +587,95 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
   hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
     n.style.setProperty('--gy',(x*14)+'deg');n.style.setProperty('--gx',(-y*10)+'deg')});
   hero.addEventListener('pointerleave',function(){n.style.setProperty('--gy','0deg');n.style.setProperty('--gx','0deg')});
+})();
+</script>
+<script>
+(function(){
+  var D={"fe": {"t": "Frontend", "c": "Responsive interfaces for the client sites and AI tools above.", "i": ["React", "Next.js", "Vite", "Tailwind CSS", "HTML", "CSS"]}, "be": {"t": "Backend", "c": "REST APIs, JWT authentication and real-time features with WebSockets.", "i": ["Node.js", "Express", "FastAPI", "Django", "REST APIs", "WebSockets", "JWT"]}, "db": {"t": "Data", "c": "MongoDB for app data and SQLite for lighter projects.", "i": ["MongoDB", "SQLite"]}, "ai": {"t": "AI", "c": "RAG chatbots and agents that call tools, built on hosted LLM APIs.", "i": ["LangChain", "FAISS", "RAG", "Gemini API", "Groq API", "Prompt engineering"]}, "ship": {"t": "Ship", "c": "Version control and hosting for the projects that are live.", "i": ["Git and GitHub", "Vercel", "Render"]}, "lang": {"t": "Languages", "c": "JavaScript and TypeScript on the web, Python for APIs and AI.", "i": ["JavaScript", "TypeScript", "Python"]}};
+  var slabs=[].slice.call(document.querySelectorAll('.slab')),pan=document.getElementById('pan'),cur=0,timer,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function show(i){
+    cur=i;var d=D[slabs[i].dataset.k];
+    slabs.forEach(function(b,k){b.setAttribute('aria-selected',k===i)});
+    document.getElementById('pt').textContent=d.t;document.getElementById('pc').textContent=d.c;
+    var ch=document.getElementById('pch');ch.textContent='';
+    d.i.forEach(function(x){var s=document.createElement('span');s.textContent=x;ch.appendChild(s)});
+    pan.classList.remove('swap');void pan.offsetWidth;pan.classList.add('swap');
+  }
+  function auto(){if(reduce)return;clearInterval(timer);timer=setInterval(function(){show((cur+1)%slabs.length)},4500)}
+  slabs.forEach(function(b,i){
+    b.addEventListener('click',function(){show(i);auto()});
+    b.addEventListener('mouseenter',function(){if(cur!==i){show(i);auto()}});
+    b.addEventListener('focus',function(){show(i)});
+  });
+  auto();
+})();
+</script>
+<script>
+(function(){
+  var orb=document.getElementById('orb'),cv=document.getElementById('orbc'),ctx=cv.getContext('2d');
+  var nodes=[].slice.call(orb.querySelectorAll('.orbn')),slabs=[].slice.call(document.querySelectorAll('.slab'));
+  var idx={fe:0,be:1,db:2,ai:3,ship:4,lang:5},reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var rings=[{r:105,a:27,g:-16,sp:.55},{r:172,a:23,g:12,sp:-.42},{r:238,a:30,g:-6,sp:.32}];
+  var by=[[],[],[]];nodes.forEach(function(n){by[+n.dataset.r].push(n)});
+  by.forEach(function(g,ri){g.forEach(function(n,i){n._t=i*2*Math.PI/g.length+ri*.9})});
+  var S=560,gx=0,gy=0,tx=0,ty=0,spd=reduce?0:1,tsp=spd,t=0,last=0,key='fe',vis=true;
+  function size(){S=orb.clientWidth;var d=Math.min(2,devicePixelRatio||1);cv.width=cv.height=S*d;ctx.setTransform(d,0,0,d,0,0)}
+  function P(R,A,G,th){
+    var x=R*Math.cos(th),z0=R*Math.sin(th),a=A*Math.PI/180,g=G*Math.PI/180;
+    var y1=-z0*Math.sin(a),z1=z0*Math.cos(a);
+    var x2=x*Math.cos(g)-y1*Math.sin(g),y2=x*Math.sin(g)+y1*Math.cos(g);
+    var y3=y2*Math.cos(gx)-z1*Math.sin(gx),z3=y2*Math.sin(gx)+z1*Math.cos(gx);
+    var x4=x2*Math.cos(gy)+z3*Math.sin(gy),z4=-x2*Math.sin(gy)+z3*Math.cos(gy);
+    var k=S/560,s=900/(900-z4*k);
+    return{x:S/2+x4*k*s,y:S/2+y3*k*s,z:z4,s:s};
+  }
+  function draw(){
+    var k=S/560,c=S/2;ctx.clearRect(0,0,S,S);
+    var gl=ctx.createRadialGradient(c,c,10*k,c,c,200*k);gl.addColorStop(0,'rgba(160,220,50,.28)');gl.addColorStop(1,'rgba(160,220,50,0)');
+    ctx.fillStyle=gl;ctx.fillRect(0,0,S,S);
+    rings.forEach(function(rg){
+      var prev=P(rg.r,rg.a,rg.g,0);
+      for(var i=1;i<=120;i++){var p=P(rg.r,rg.a,rg.g,i/120*2*Math.PI);
+        ctx.strokeStyle='rgba(214,242,58,'+(.1+.5*(p.z+rg.r)/(2*rg.r))+')';ctx.lineWidth=1.4;
+        ctx.beginPath();ctx.moveTo(prev.x,prev.y);ctx.lineTo(p.x,p.y);ctx.stroke();prev=p}
+    });
+    var r=66*k,g2=ctx.createRadialGradient(c-r*.3,c-r*.35,r*.1,c,c,r);
+    g2.addColorStop(0,'rgba(214,242,58,.95)');g2.addColorStop(.45,'rgba(72,150,40,.85)');g2.addColorStop(1,'rgba(8,26,8,.96)');
+    ctx.fillStyle=g2;ctx.beginPath();ctx.arc(c,c,r,0,7);ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,.2)';ctx.lineWidth=1;
+    for(var m=0;m<5;m++){var ph=t*.5+m*Math.PI/5;ctx.beginPath();ctx.ellipse(c,c,Math.max(.5,r*Math.abs(Math.cos(ph))),r,0,0,7);ctx.stroke()}
+    [-.55,0,.55].forEach(function(o){var yy=o*r,rx=Math.sqrt(r*r-yy*yy);ctx.beginPath();ctx.ellipse(c,c+yy,rx,rx*.22,0,0,7);ctx.stroke()});
+  }
+  function place(){
+    var k=Math.max(.72,S/560);
+    nodes.forEach(function(n){
+      var rg=rings[+n.dataset.r],p=P(rg.r,rg.a,rg.g,n._t+rg.sp*t),f=(p.z+rg.r)/(2*rg.r),on=n.dataset.l===key;
+      n.style.transform='translate('+p.x+'px,'+p.y+'px) translate(-50%,-50%) scale('+(p.s*k)+')';
+      n.style.zIndex=Math.round(p.z+300);
+      n.style.opacity=(.4+.6*f)*(on?1:.5);
+      n.classList.toggle('on',on);
+    });
+  }
+  function frame(now){
+    var dt=Math.min(.05,(now-last)/1000||0);last=now;
+    spd+=(tsp-spd)*.08;t+=dt*spd;gx+=(tx-gx)*.06;gy+=(ty-gy)*.06;
+    if(vis){draw();place()}
+    requestAnimationFrame(frame);
+  }
+  function sync(){slabs.forEach(function(b){if(b.getAttribute('aria-selected')==='true')key=b.dataset.k})}
+  new MutationObserver(sync).observe(document.querySelector('.slabs'),{attributes:true,subtree:true,attributeFilter:['aria-selected']});sync();
+  nodes.forEach(function(n){
+    n.addEventListener('mouseenter',function(){slabs[idx[n.dataset.l]].dispatchEvent(new Event('mouseenter'));tsp=reduce?0:.18});
+    n.addEventListener('mouseleave',function(){tsp=reduce?0:1});
+    n.addEventListener('click',function(){slabs[idx[n.dataset.l]].click()});
+  });
+  if(!reduce&&matchMedia('(hover:hover)').matches){
+    orb.addEventListener('pointermove',function(e){var r=orb.getBoundingClientRect();ty=((e.clientX-r.left)/r.width-.5)*.7;tx=-((e.clientY-r.top)/r.height-.5)*.45});
+    orb.addEventListener('pointerleave',function(){tx=0;ty=0});
+  }
+  new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(orb);
+  new ResizeObserver(size).observe(orb);size();
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
