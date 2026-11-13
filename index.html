@@ -469,12 +469,55 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
 .bi.dk{background:#0E160B;border:1px solid rgba(214,242,58,.3)}
 .bi svg{width:19px;height:19px}
 </style>
+<style>
+.case{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center;padding:42px;margin-bottom:28px}
+.case.rev{grid-template-columns:1.05fr 1fr}.case.rev .ctext{order:2}
+.case h3{font-size:clamp(1.8rem,3vw,2.7rem);font-weight:800;letter-spacing:-.035em;line-height:1.1;margin:0 0 4px}
+.case p{margin:14px 0 0;color:var(--muted);font-size:17.5px}
+.case p.role{color:#E4E5EF}
+.case .stack{color:#fff}
+.cvis{min-width:0}
+.bwin{border-radius:14px;overflow:hidden;border:1px solid var(--edge);background:#0F1A0B;box-shadow:0 40px 80px -30px rgba(0,0,0,.75),0 0 70px -24px rgba(214,242,58,.3);transform:perspective(1200px) rotateY(-7deg) rotateX(2deg);transition:transform .5s}
+.case:hover .bwin{transform:perspective(1200px) rotateY(0) rotateX(0)}
+.pipe{list-style:none;display:flex;margin:22px 0 0;padding:0}
+.pipe li{position:relative;flex:1;padding-top:26px;font-size:14.5px;line-height:1.3;color:var(--muted);opacity:.4;transition:opacity .5s,color .5s}
+.pipe li::before{content:"";position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid rgba(214,242,58,.6);transition:background .5s,box-shadow .5s}
+.pipe li::after{content:"";position:absolute;left:16px;right:6px;top:9px;border-top:2px dashed rgba(214,242,58,.35)}
+.pipe li:last-child::after{display:none}
+.pipe li.on{opacity:1;color:#fff}
+.pipe li.on::before{background:var(--lime);border-color:var(--lime);box-shadow:0 0 14px var(--lime)}
+.phone{width:min(280px,100%);margin:0 auto;border:9px solid #152210;border-radius:38px;background:#0B1708;box-shadow:0 0 0 1px var(--edge),0 40px 80px -24px rgba(0,0,0,.8),0 0 70px -20px rgba(214,242,58,.28);overflow:hidden}
+.ph-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--edge);font:700 15px var(--display)}
+.ph-top i{width:9px;height:9px;border-radius:50%;background:#3DF0A0;box-shadow:0 0 8px #3DF0A0}
+.phone .msgs{min-height:400px;padding:16px 14px;gap:10px}
+.phone .cm{font-size:1rem;padding:4px 14px;max-width:92%}
+.phone .tc{font-size:12px;padding:3px 9px}
+.cap2{margin:16px 0 0;text-align:center;color:var(--muted);font-size:15px}
+.chk{max-width:420px;margin:0 auto;padding:22px;border:1px solid var(--edge);border-radius:18px;background:rgba(255,255,255,.04);box-shadow:0 0 70px -24px rgba(214,242,58,.28)}
+.chk-post{position:relative;display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:12px;background:rgba(0,0,0,.28);overflow:hidden}
+.chk-post span{height:10px;border-radius:5px;background:rgba(255,255,255,.18)}
+.chk-post span.s{width:62%}
+.scan{position:absolute;left:0;right:0;height:46px;top:-46px;background:linear-gradient(transparent,rgba(214,242,58,.38),transparent);animation:scan 3.2s ease-in-out infinite}
+@keyframes scan{to{top:100%}}
+.chk-res{display:flex;gap:10px;margin-top:18px}
+.chk-res b{flex:1;text-align:center;padding:8px 0;border-radius:10px;border:1px solid var(--edge);font-size:14.5px;color:var(--muted);animation:pick 6s infinite}
+.chk-res b:nth-child(2){animation-delay:2s}.chk-res b:nth-child(3){animation-delay:4s}
+@keyframes pick{0%,28%{background:var(--lime);color:#0B1708;border-color:var(--lime)}34%,100%{background:none;color:var(--muted);border-color:var(--edge)}}
+.js .gc.rv.in{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+@media (max-width:1000px){.case,.case.rev{grid-template-columns:1fr;gap:28px;padding:26px}.case.rev .ctext{order:0}.bwin{transform:none}}
+@media (prefers-reduced-motion:reduce){.scan,.chk-res b{animation:none}.bwin{transition:none;transform:none}.pipe li,.pipe li::before{transition:none}}
+</style>
+<style>
+.media .plate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 22px;font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:-.02em;color:var(--lime)}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.bwin .media{border-bottom:0}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
 <header class="top"><div class="wrap bar">
   <a class="brand" href="#top">Asma Shahzadi</a>
-  <nav aria-label="Main"><a href="#demo">Demo</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="pill" href="#contact">Let's talk</a></nav>
+  <nav aria-label="Main"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="pill" href="#contact">Let's talk</a></nav>
 </div></header>
 
 <main>
@@ -499,92 +542,53 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
   </div>
 </div>
 
-<div class="marq" aria-hidden="true"><div>
-  <span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>Python</span><span>TypeScript</span><span>MongoDB</span><span>LangChain</span><span>RAG</span><span>Django</span><span>WebSockets</span><span>Vercel</span>
-  <span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>Python</span><span>TypeScript</span><span>MongoDB</span><span>LangChain</span><span>RAG</span><span>Django</span><span>WebSockets</span><span>Vercel</span>
-</div></div>
-
-<section id="demo">
-  <div class="wrap">
-    <div class="sh rv"><h2>Working AI systems, not just pages.</h2><p class="note">Live previews of my deployed sites first, then two of my AI projects shown as they work.</p></div>
-    <div class="devwrap rv"><div class="device" id="device">
-    <span class="chip c1">Live on Vercel</span><span class="chip c2">React + FastAPI</span>
-    <div class="frame">
-      <div class="tabs" role="tablist" aria-label="Live project previews">
-        <button class="tab" role="tab" aria-selected="true" data-i="0">ClaimPilot AI</button>
-        <button class="tab" role="tab" aria-selected="false" data-i="1">BodyTech Gym</button>
-        <button class="tab" role="tab" aria-selected="false" data-i="2">Eco Car Workshop</button>
-      </div>
-      <div class="vp">
-        <iframe class="on" src="https://claimpilotai.vercel.app" title="ClaimPilot AI live preview" tabindex="-1"></iframe>
-        <iframe src="https://bodytech-gym-nextjs.vercel.app/" title="BodyTech Gym live preview" loading="lazy" tabindex="-1"></iframe>
-        <iframe src="https://eco-car-workshop-next-js.vercel.app/" title="Eco Car Workshop live preview" loading="lazy" tabindex="-1"></iframe>
-      </div>
-      <div class="addr" id="addr">claimpilotai.vercel.app</div>
-    </div>
-  </div></div>
-    <div class="demo">
-      <div class="gc rv">
-        <div class="pad" style="padding-bottom:0"><h3>Mulaqat: an Urdu booking agent</h3></div>
-        <div class="msgs" id="msgs" aria-live="polite"></div>
-        <p class="cap">Scripted walkthrough of the booking flow, with tool names simplified. <button class="rp" id="replay" type="button">Replay</button></p>
-      </div>
-      <div class="gc rv">
-        <div class="pad" style="padding-bottom:0"><h3>ClaimPilot AI: from a crash photo to a claim</h3></div>
-        <div class="flow" id="flow">
-          <div class="nd" data-n="1"><b>Crash photo</b><span>Uploaded in the React frontend I built</span></div><div class="ln"></div>
-          <div class="nd" data-n="2"><b>Vision model</b><span>Llama-4 Vision via Groq locates the damage</span></div><div class="ln"></div>
-          <div class="nd" data-n="3"><b>Itemized estimate</b><span>Repair costs in PKR from the FastAPI backend</span></div><div class="ln"></div>
-          <div class="nd" data-n="4"><b>Fraud confidence score</b><span>Shown to the surveyor in the dashboard</span></div>
-        </div>
-        <p class="cap">Built at the HEC GenAI Hackathon, Cohort 2.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="marq" aria-hidden="true"><div><span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>Python</span><span>TypeScript</span><span>MongoDB</span><span>LangChain</span><span>RAG</span><span>Django</span><span>WebSockets</span><span>Vercel</span><span>React</span><span>Next.js</span><span>Node.js</span><span>FastAPI</span><span>Python</span><span>TypeScript</span><span>MongoDB</span><span>LangChain</span><span>RAG</span><span>Django</span><span>WebSockets</span><span>Vercel</span></div></div>
 
 <section id="work">
   <div class="wrap">
     <div class="sh rv"><h2>Selected work</h2><p class="note">A hackathon project, an Urdu-first AI agent, my final year project, and sites for real businesses in Multan.</p></div>
     <div class="fbar" id="fbar" hidden><span>Showing projects that use <b id="ftech"></b></span><button type="button" id="fclear">Show all</button></div>
-    <div class="bento">
-      <article data-tech="react fastapi llm vercel" class="gc p p-big rv">
-        <div class="media"><iframe src="https://claimpilotai.vercel.app" title="ClaimPilot AI" loading="lazy" tabindex="-1"></iframe></div>
-        <div class="pad">
-          <span class="tag">HEC GenAI Hackathon, Cohort 2</span>
-          <h3>ClaimPilot AI</h3>
-          <p>An agentic auto-insurance surveyor. Upload a crash photo and the AI locates the damage, writes an itemized repair estimate in PKR and gives a fraud confidence score.</p>
-          <p class="role">My role: the complete React frontend, from the image upload flow to mapping the AI backend's JSON into the interface, plus Vercel deployment.</p>
-          <p class="stack">React, FastAPI, LangChain, Llama-4 Vision via Groq</p>
-          <div class="plinks"><a class="lk" href="https://claimpilotai.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/samiyashahzad/claimpilotai" target="_blank" rel="noopener">Code</a></div>
-        </div>
-      </article>
-      <article data-tech="react fastapi llm" class="gc p p-side rv">
-        <div class="pad">
-          <span class="tag">AI agent</span>
-          <h3>Mulaqat</h3>
-          <p style="color:#F1F1F8">An Urdu and Roman Urdu receptionist that books appointments by calling tools. The demo uses a dental clinic's public listing data and is not affiliated with the clinic.</p>
-          <div class="mini" aria-hidden="true"><div class="cm u" lang="ur">مجھے کل شام کی اپائنٹمنٹ چاہیے</div><div class="cm b" lang="ur">جی ضرور، کل شام پانچ بجے کا وقت خالی ہے۔</div></div>
-          <p class="stack">FastAPI, React, Gemini API</p>
-          <div class="plinks"><a class="lk" href="https://github.com/asmashahzadi764-alt/mulaqat-ai-booking-agent" target="_blank" rel="noopener">Code</a></div>
-        </div>
-      </article>
-      <article data-tech="react" class="gc p p-wide rv">
-        <div class="pad">
-          <div><span class="tag">Final year project, in development</span><h3>Fake &amp; Misquoted Quran–Hadith Post Detector</h3></div>
-          <div><p style="margin:0">A team project at Women University Multan that checks Quran and Hadith quotes shared on social media and flags the ones that are fake or misquoted.</p><p class="stack">React, REST API</p></div>
-        </div>
-      </article>
-    </div>
+    <article class="gc case rv" data-tech="react fastapi llm vercel">
+      <div class="ctext">
+        <span class="tag">HEC GenAI Hackathon, Cohort 2</span>
+        <h3>ClaimPilot AI</h3>
+        <p>An agentic auto-insurance surveyor. Upload a crash photo and the AI locates the damage, writes an itemized repair estimate in PKR and gives a fraud confidence score.</p>
+        <p class="role">My role: the complete React frontend, from the image upload flow to mapping the AI backend's JSON into the interface, plus Vercel deployment.</p>
+        <p class="stack"><b>Stack:</b> React, FastAPI, LangChain, Llama-4 Vision via Groq</p>
+        <div class="plinks"><a class="lk" href="https://claimpilotai.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/samiyashahzad/claimpilotai" target="_blank" rel="noopener">Code</a></div>
+      </div>
+      <div class="cvis"><div class="bwin"><div class="wb"><i></i><i></i><i></i><span>claimpilotai.vercel.app</span></div><div class="media"><span class="plate">ClaimPilot AI</span><img src="assets/claimpilot.jpg" alt="ClaimPilot AI screenshot" loading="lazy" onerror="this.remove()"></div></div><ol class="pipe" aria-label="How a claim moves through ClaimPilot"><li>Crash photo</li><li>Vision model</li><li>Itemized estimate</li><li>Fraud score</li></ol></div>
+    </article>
+
+    <article class="gc case rev rv" data-tech="react fastapi llm">
+      <div class="ctext">
+        <span class="tag">AI agent</span>
+        <h3>Mulaqat</h3>
+        <p>An Urdu and Roman Urdu receptionist that books appointments by calling tools. The demo uses a dental clinic's public listing data and is not affiliated with the clinic.</p>
+        <p class="stack"><b>Stack:</b> FastAPI, React, Gemini API</p>
+        <div class="plinks"><a class="lk" href="https://github.com/asmashahzadi764-alt/mulaqat-ai-booking-agent" target="_blank" rel="noopener">Code</a></div>
+      </div>
+      <div class="cvis"><div class="bwin"><div class="wb"><i></i><i></i><i></i><span>Mulaqat</span></div><div class="media"><span class="plate">Mulaqat</span><img src="assets/mulaqat.jpg" alt="Mulaqat screenshot" loading="lazy" onerror="this.remove()"></div></div></div>
+    </article>
+
+    <article class="gc case rv" data-tech="react">
+      <div class="ctext">
+        <span class="tag">Final year project, in development</span>
+        <h3>Fake &amp; Misquoted Quran–Hadith Post Detector</h3>
+        <p>A team project at Women University Multan that checks Quran and Hadith quotes shared on social media and flags the ones that are fake or misquoted.</p>
+        <p class="stack"><b>Stack:</b> React, REST API</p>
+      </div>
+      <div class="cvis"><div class="bwin"><div class="wb"><i></i><i></i><i></i><span>Quran–Hadith Post Detector</span></div><div class="media"><span class="plate">Fake &amp; Misquoted Quran–Hadith Post Detector</span><img src="assets/quran-detector.jpg" alt="Fake &amp; Misquoted Quran–Hadith Post Detector screenshot" loading="lazy" onerror="this.remove()"></div></div></div>
+    </article>
 
     <h3 class="group rv">Client and full-stack projects</h3>
     <div class="tiles">
-      <article data-tech="vercel" class="gc p rv"><div class="media"><iframe src="https://family-medical-and-dental-care.vercel.app" title="Family Medical and Dental Care" loading="lazy" tabindex="-1"></iframe></div><div class="pad"><h3>Family Medical and Dental Care</h3><p>Booking system and admin dashboard, live for a real clinic in Multan.</p><p class="stack">Node.js, Express, JWT, Tailwind CSS</p><div class="plinks"><a class="lk" href="https://family-medical-and-dental-care.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/Family-medical-and-dental-care-" target="_blank" rel="noopener">Code</a></div></div></article>
-      <article data-tech="react vercel" class="gc p rv"><div class="media"><iframe src="https://bodytech-gym-nextjs.vercel.app/" title="BodyTech Gym" loading="lazy" tabindex="-1"></iframe></div><div class="pad"><h3>BodyTech Gym &amp; Fitness Center</h3><p>Single-page site for a real gym in Multan, with API-served content, JSON-LD data and Google Search Console indexing.</p><p class="stack">Next.js 14, React, Tailwind CSS</p><div class="plinks"><a class="lk" href="https://bodytech-gym-nextjs.vercel.app/" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/bodytech-gym-nextjs" target="_blank" rel="noopener">Code</a></div></div></article>
-      <article data-tech="react vercel" class="gc p rv"><div class="media"><iframe src="https://eco-car-workshop-next-js.vercel.app/" title="Eco Car Workshop" loading="lazy" tabindex="-1"></iframe></div><div class="pad"><h3>Eco Car Workshop</h3><p>Site for a car repair workshop in Multan. The booking form checks opening hours and sends the request to WhatsApp.</p><p class="stack">Next.js 14, TypeScript, React</p><div class="plinks"><a class="lk" href="https://eco-car-workshop-next-js.vercel.app/" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/eco-car-workshop-next-js" target="_blank" rel="noopener">Code</a></div></div></article>
-      <article data-tech="react mongodb vercel" class="gc p rv"><div class="media"><img src="assets/ishop.jpg" alt="iShop screenshot" loading="lazy"></div><div class="pad"><h3>iShop</h3><p>MERN e-commerce store with an admin dashboard for products and customer messages.</p><p class="stack">React, Node.js, MongoDB, JWT</p><div class="plinks"><a class="lk" href="https://ishop-nu.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/ishop" target="_blank" rel="noopener">Code</a></div></div></article>
-      <article data-tech="react fastapi llm vercel" class="gc p rv"><div class="media"><img src="assets/iba-chatbot.jpg" alt="IBA Sukkur AI Chatbot screenshot" loading="lazy"></div><div class="pad"><h3>IBA Sukkur AI Chatbot</h3><p>RAG chatbot built with a teammate who built the backend. I built the React frontend: chat UI, floating widget and API integration.</p><p class="stack">React, FastAPI, LangChain, FAISS</p><div class="plinks"><a class="lk" href="https://iba-chat.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/IBA-chatbot" target="_blank" rel="noopener">Code</a></div></div></article>
-      <article data-tech="react mongodb vercel" class="gc p rv"><div class="media"><img src="assets/pm-tool.jpg" alt="Project Management Tool screenshot" loading="lazy"></div><div class="pad"><h3>Project Management Tool</h3><p>Kanban-style task tracker with real-time updates, built during my CodeAlpha internship.</p><p class="stack">React, Node.js, Socket.io, MongoDB</p><div class="plinks"><a class="lk" href="https://project-management-tool-six-olive.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/Project-Management-Tool" target="_blank" rel="noopener">Code</a></div></div></article>
+      <article data-tech="vercel" class="gc p rv"><div class="media"><span class="plate">Family Medical and Dental Care</span><img src="assets/family-dental.jpg" alt="Family Medical and Dental Care screenshot" loading="lazy" onerror="this.remove()"></div><div class="pad"><h3>Family Medical and Dental Care</h3><p>Booking system and admin dashboard, live for a real clinic in Multan.</p><p class="stack">Node.js, Express, JWT, Tailwind CSS</p><div class="plinks"><a class="lk" href="https://family-medical-and-dental-care.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/Family-medical-and-dental-care-" target="_blank" rel="noopener">Code</a></div></div></article>
+      <article data-tech="react vercel" class="gc p rv"><div class="media"><span class="plate">BodyTech Gym</span><img src="assets/bodytech.jpg" alt="BodyTech Gym screenshot" loading="lazy" onerror="this.remove()"></div><div class="pad"><h3>BodyTech Gym &amp; Fitness Center</h3><p>Single-page site for a real gym in Multan, with API-served content, JSON-LD data and Google Search Console indexing.</p><p class="stack">Next.js 14, React, Tailwind CSS</p><div class="plinks"><a class="lk" href="https://bodytech-gym-nextjs.vercel.app/" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/bodytech-gym-nextjs" target="_blank" rel="noopener">Code</a></div></div></article>
+      <article data-tech="react vercel" class="gc p rv"><div class="media"><span class="plate">Eco Car Workshop</span><img src="assets/eco-car.jpg" alt="Eco Car Workshop screenshot" loading="lazy" onerror="this.remove()"></div><div class="pad"><h3>Eco Car Workshop</h3><p>Site for a car repair workshop in Multan. The booking form checks opening hours and sends the request to WhatsApp.</p><p class="stack">Next.js 14, TypeScript, React</p><div class="plinks"><a class="lk" href="https://eco-car-workshop-next-js.vercel.app/" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/eco-car-workshop-next-js" target="_blank" rel="noopener">Code</a></div></div></article>
+      <article data-tech="react mongodb vercel" class="gc p rv"><div class="media"><span class="plate">iShop</span><img src="assets/ishop.jpg" alt="iShop screenshot" loading="lazy" onerror="this.remove()"></div><div class="pad"><h3>iShop</h3><p>MERN e-commerce store with an admin dashboard for products and customer messages.</p><p class="stack">React, Node.js, MongoDB, JWT</p><div class="plinks"><a class="lk" href="https://ishop-nu.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/ishop" target="_blank" rel="noopener">Code</a></div></div></article>
+      <article data-tech="react fastapi llm vercel" class="gc p rv"><div class="media"><span class="plate">IBA Sukkur AI Chatbot</span><img src="assets/iba-chatbot.jpg" alt="IBA Sukkur AI Chatbot screenshot" loading="lazy" onerror="this.remove()"></div><div class="pad"><h3>IBA Sukkur AI Chatbot</h3><p>RAG chatbot built with a teammate who built the backend. I built the React frontend: chat UI, floating widget and API integration.</p><p class="stack">React, FastAPI, LangChain, FAISS</p><div class="plinks"><a class="lk" href="https://iba-chat.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/IBA-chatbot" target="_blank" rel="noopener">Code</a></div></div></article>
+      <article data-tech="react mongodb vercel" class="gc p rv"><div class="media"><span class="plate">Project Management Tool</span><img src="assets/pm-tool.jpg" alt="Project Management Tool screenshot" loading="lazy" onerror="this.remove()"></div><div class="pad"><h3>Project Management Tool</h3><p>Kanban-style task tracker with real-time updates, built during my CodeAlpha internship.</p><p class="stack">React, Node.js, Socket.io, MongoDB</p><div class="plinks"><a class="lk" href="https://project-management-tool-six-olive.vercel.app" target="_blank" rel="noopener">Live demo</a><a class="lk" href="https://github.com/asmashahzadi764-alt/Project-Management-Tool" target="_blank" rel="noopener">Code</a></div></div></article>
     </div>
     <p style="margin:36px 0 0"><a class="lk" href="https://github.com/asmashahzadi764-alt" target="_blank" rel="noopener">More on GitHub</a></p>
   </div>
@@ -632,34 +636,16 @@ button.node[aria-pressed=true] i,button.node:hover i{background:#0B1708;box-shad
 (function(){
   var root=document.documentElement;root.classList.add('js');
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  /* scale live iframes to their frames */
-  function fit(){document.querySelectorAll('.vp,.media').forEach(function(v){var s=v.clientWidth/1280;v.querySelectorAll('iframe').forEach(function(f){f.style.transform='scale('+s+')'})})}
-  fit();addEventListener('resize',fit);addEventListener('load',fit);
-  /* hero device: tabs, auto-rotate, tilt */
-  var tabs=[].slice.call(document.querySelectorAll('.tab')),fr=[].slice.call(document.querySelectorAll('.vp iframe')),addr=document.getElementById('addr'),cur=0,timer;
-  var urls=['claimpilotai.vercel.app','bodytech-gym-nextjs.vercel.app','eco-car-workshop-next-js.vercel.app'];
-  function show(i){cur=i;tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i)});fr.forEach(function(f,k){f.classList.toggle('on',k===i)});addr.textContent=urls[i]}
-  function auto(){if(reduce)return;clearInterval(timer);timer=setInterval(function(){show((cur+1)%3)},6000)}
-  tabs.forEach(function(t,k){t.addEventListener('click',function(){show(k);auto()})});auto();
-  var dev=document.getElementById('device'),frame=dev.querySelector('.frame');
-  if(!reduce)dev.addEventListener('pointermove',function(e){var r=dev.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;frame.style.setProperty('--ry',(-9+x*12)+'deg');frame.style.setProperty('--rx',(5-y*10)+'deg')});
-  /* glass cards: glow follows cursor, slight 3D tilt */
   document.querySelectorAll('.gc').forEach(function(c){
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
       c.style.setProperty('--px',x*100+'%');c.style.setProperty('--py',y*100+'%');
       if(!reduce&&r.width<700){c.style.setProperty('--ry',(x-.5)*6+'deg');c.style.setProperty('--rx',(.5-y)*6+'deg')}});
     c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
   });
-  /* Mulaqat scripted chat */
-  var S=[['u','مجھے کل شام کی اپائنٹمنٹ چاہیے'],['tc','check_availability(date: tomorrow, slot: evening)'],['tc','free: 5:00 PM, 6:30 PM'],['b','جی ضرور، کل شام پانچ بجے اور ساڑھے چھ بجے کا وقت خالی ہے۔ کون سا بک کروں؟'],['u','پانچ بجے والا کر دیں'],['tc','book_appointment(time: 17:00)'],['tc','status: confirmed'],['b','آپ کی اپائنٹمنٹ کل شام پانچ بجے بک ہو گئی ہے۔']];
-  var box=document.getElementById('msgs'),run=0;
-  function play(){var id=++run,i=0;box.innerHTML='';(function next(){if(id!==run||i>=S.length)return;var s=S[i++],d=document.createElement('div');if(s[0]==='tc'){d.className='tc';d.dir='ltr'}else{d.className='cm '+s[0];d.lang='ur'}d.textContent=s[1];box.appendChild(d);setTimeout(next,s[0]==='tc'?750:1500)})()}
-  document.getElementById('replay').addEventListener('click',play);
-  function flow(){document.querySelectorAll('.nd').forEach(function(e,i){setTimeout(function(){e.classList.add('on')},reduce?0:i*700)})}
-  /* reveal on scroll */
+  function pipe(){document.querySelectorAll('.pipe li').forEach(function(e,i){setTimeout(function(){e.classList.add('on')},reduce?0:i*700)})}
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;var t=en.target;io.unobserve(t);
-    if(t.id==='msgs')play();else if(t.id==='flow')flow();else t.classList.add('in')})},{threshold:.15});
-  io.observe(box);io.observe(document.getElementById('flow'));
+    if(t.classList.contains('pipe'))pipe();else t.classList.add('in')})},{threshold:.2});
+  var p=document.querySelector('.pipe');if(p)io.observe(p);
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 })();
 </script>
