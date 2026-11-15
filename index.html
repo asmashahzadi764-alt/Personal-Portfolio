@@ -609,6 +609,29 @@ section{padding:84px 0}
 .copy:hover{filter:brightness(1.1)}
 .copied{margin-left:12px;color:var(--lime);font-size:15px}
 </style>
+<style>
+html,body{overflow-x:hidden}
+/* project role lines: plain body text, not the hero's italic serif */
+.case p.role,.rpanel p.role{font-family:var(--sans);font-style:normal;font-weight:400;letter-spacing:0;line-height:1.6;color:#E4E5EF;text-shadow:none}
+@media (max-width:1000px){
+  .cut::before{inset:6% 0 0 0}
+  main,.top,footer{overflow-x:clip}
+}
+@media (max-width:700px){
+  .bar{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;padding-left:20px;padding-right:20px}
+  .bar nav{gap:12px;font-size:14.5px;flex-wrap:wrap}
+  .bar nav a.pill{padding:4px 12px}
+  .giant{text-shadow:1px 1px 0 rgba(214,242,58,.5),2px 2px 0 rgba(214,242,58,.25),3px 4px 12px rgba(0,0,0,.5)}
+  .cut .node:nth-of-type(1),.cut .node:nth-of-type(2),.cut .node:nth-of-type(3){left:15% !important}
+  .cut .node:nth-of-type(4){left:72% !important}
+  .cut .node:nth-of-type(5){left:80% !important}
+  .node{font-size:13px;padding:4px 11px}
+  .orbn em{display:none}
+  .ot{width:36px;height:36px;border-radius:10px}
+  .ot .ic{width:19px;height:19px}
+  .core b{font-size:.9rem}.core span{font-size:.8rem}
+}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
@@ -802,7 +825,7 @@ section{padding:84px 0}
     [-.55,0,.55].forEach(function(o){var yy=o*r,rx=Math.sqrt(r*r-yy*yy);ctx.beginPath();ctx.ellipse(c,c+yy,rx,rx*.22,0,0,7);ctx.stroke()});
   }
   function place(){
-    var k=Math.max(.75,S/560);
+    var k=Math.max(.58,S/560);
     nodes.forEach(function(n){
       var rg=rings[+n.dataset.r],p=P(rg.r,rg.a,rg.g,n._t+rg.sp*t),f=(p.z+rg.r)/(2*rg.r),on=n.dataset.l===key;
       n.style.transform='translate('+p.x+'px,'+p.y+'px) translate(-50%,-50%) scale('+(p.s*k)+')';
