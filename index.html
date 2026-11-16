@@ -632,6 +632,33 @@ html,body{overflow-x:hidden}
   .core b{font-size:.9rem}.core span{font-size:.8rem}
 }
 </style>
+<style>
+.ct{display:grid;grid-template-columns:1fr 1.05fr;gap:52px;align-items:start}
+.ct-l h2{font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.04em;font-weight:800;max-width:9em}
+.ct-p{margin:22px 0 0;color:var(--muted);font-size:19px;max-width:30em}
+.ct-time{display:inline-flex;align-items:center;gap:10px;margin:22px 0 0;padding:5px 16px;border:1px solid var(--edge);border-radius:999px;background:rgba(255,255,255,.06);font-size:15.5px}
+.ct-time i{width:8px;height:8px;border-radius:50%;background:#3DF0A0;box-shadow:0 0 10px #3DF0A0}
+.ct-mail{margin-top:26px}
+.ct .social{margin-top:26px;align-items:center}
+.ct .btn.ghost{color:#fff}
+.brief{padding:30px 32px}
+.brief h3{font-size:1.5rem;font-weight:800;letter-spacing:-.03em}
+.bl{display:block;margin:20px 0 10px;color:var(--muted);font-size:15.5px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--edge);background:rgba(255,255,255,.05);color:#fff;border-radius:999px;padding:8px 18px;font:600 15.5px var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.opt:hover{border-color:var(--lime)}
+.opt[aria-pressed=true]{background:var(--lime);color:#0B1708;border-color:var(--lime)}
+#cname{width:100%;padding:11px 16px;border-radius:12px;border:1px solid var(--edge);background:rgba(0,0,0,.28);color:#fff;font:500 16px var(--sans)}
+#cname::placeholder{color:#8E947F}
+.pv{margin:0;padding:16px 18px;border:1px solid var(--edge);border-radius:12px;background:rgba(0,0,0,.34);color:#D8DBE8;font:14.5px/1.65 ui-monospace,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+.brow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}
+@media (max-width:1000px){.ct{grid-template-columns:1fr;gap:34px}}
+</style>
+<style>
+.ct .social{justify-content:flex-start}
+.ct-mail .copy{margin:14px 12px 0 0}
+.ct-mail .copied{margin-left:0}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
@@ -717,12 +744,25 @@ html,body{overflow-x:hidden}
 </section>
 
 <section id="contact">
-  <div class="wrap">
-    <div class="gc cta-card rv">
+  <div class="wrap ct">
+    <div class="ct-l rv">
       <h2>Let's build something together.</h2>
-      <p>I'm open to freelance projects, remote roles and internships in full-stack and AI development. Email is the fastest way to reach me.</p>
-      <a class="mail" href="mailto:asmashahzadi764@gmail.com">asmashahzadi764@gmail.com</a><button class="copy" id="copy" type="button">Copy email</button><span class="copied" id="copied" aria-live="polite"></span>
-      <div class="social"><a class="lk" href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank" rel="noopener">LinkedIn</a><a class="lk" href="https://github.com/asmashahzadi764-alt" target="_blank" rel="noopener">GitHub</a><a class="lk" href="resume.pdf" download>Resume</a></div>
+      <p class="ct-p">I'm open to freelance projects, remote roles and internships in full-stack and AI development. Pick what you need on the right and I'll get a ready-made brief, or just write to me directly.</p>
+      <p class="ct-time"><i></i><span id="mtime">Multan</span></p>
+      <div class="ct-mail"><a class="mail" href="mailto:asmashahzadi764@gmail.com">asmashahzadi764@gmail.com</a><button class="copy" id="copy" type="button">Copy email</button><span class="copied" id="copied" aria-live="polite"></span></div>
+      <div class="social"><a class="btn ghost" href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank" rel="noopener">Message on LinkedIn</a><a class="lk" href="https://github.com/asmashahzadi764-alt" target="_blank" rel="noopener">GitHub</a><a class="lk" href="resume.pdf" download>Resume</a></div>
+    </div>
+    <div class="gc brief rv">
+      <h3>Start with a quick brief</h3>
+      <p class="bl">What do you need?</p>
+      <div class="opts" data-g="need"><button type="button" class="opt" aria-pressed="true">Website</button><button type="button" class="opt" aria-pressed="false">AI chatbot or agent</button><button type="button" class="opt" aria-pressed="false">Full-stack app</button><button type="button" class="opt" aria-pressed="false">Something else</button></div>
+      <p class="bl">When do you need it?</p>
+      <div class="opts" data-g="time"><button type="button" class="opt" aria-pressed="true">This month</button><button type="button" class="opt" aria-pressed="false">In 1 to 3 months</button><button type="button" class="opt" aria-pressed="false">Not sure yet</button></div>
+      <label class="bl" for="cname">Your name (optional)</label>
+      <input id="cname" type="text" maxlength="60" autocomplete="name" placeholder="Your name">
+      <p class="bl">Your email will look like this</p>
+      <pre class="pv" id="pv"></pre>
+      <div class="brow"><a class="btn hot" id="mailgo" href="mailto:asmashahzadi764@gmail.com">Open in my email app</a><button class="copy" id="copybrief" type="button">Copy brief</button></div>
     </div>
   </div>
 </section>
@@ -917,6 +957,37 @@ html,body{overflow-x:hidden}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){m.textContent=t})}
     else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){m.textContent=t}document.body.removeChild(a)}
   });
+})();
+</script>
+<script>
+(function(){
+  var E='asmashahzadi764@gmail.com',st={need:'Website',time:'This month'};
+  var pv=document.getElementById('pv'),go=document.getElementById('mailgo'),nm=document.getElementById('cname');
+  function text(){
+    var n=nm.value.trim();
+    return {sub:'Project inquiry: '+st.need,body:'Hi Asma,\n\nI would like to talk about a project.\n\nWhat I need: '+st.need+'\nTimeline: '+st.time+(n?'\n\nThanks,\n'+n:'')};
+  }
+  function render(){
+    var t=text();pv.textContent='To: '+E+'\nSubject: '+t.sub+'\n\n'+t.body;
+    go.href='mailto:'+E+'?subject='+encodeURIComponent(t.sub)+'&body='+encodeURIComponent(t.body);
+  }
+  [].forEach.call(document.querySelectorAll('.opts'),function(g){
+    g.addEventListener('click',function(e){var b=e.target.closest('.opt');if(!b)return;
+      [].forEach.call(g.querySelectorAll('.opt'),function(o){o.setAttribute('aria-pressed',o===b)});
+      st[g.dataset.g]=b.textContent;render()});
+  });
+  nm.addEventListener('input',render);
+  document.getElementById('copybrief').addEventListener('click',function(){
+    var b=this,t=pv.textContent,old=b.textContent;
+    function ok(){b.textContent='Copied';setTimeout(function(){b.textContent=old},2000)}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok);
+    else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(x){}document.body.removeChild(a)}
+  });
+  function clock(){
+    try{var t=new Intl.DateTimeFormat('en-GB',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:'Asia/Karachi'}).format(new Date());
+      document.getElementById('mtime').textContent='Multan, '+t+' (PKT)'}catch(e){}
+  }
+  clock();setInterval(clock,30000);render();
 })();
 </script>
 </body>
