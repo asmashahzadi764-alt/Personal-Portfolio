@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B1708'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23D6F23A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700;800&family=Instrument+Serif:ital@1&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0B1708; --text:#F5F5FA; --muted:#B4B6C8; --glass:rgba(255,255,255,.055); --edge:rgba(214,242,58,.17);
@@ -723,12 +723,67 @@ a.notif:hover{background:rgba(214,242,58,.24);border-color:var(--lime)}
 .cx .big{font-size:clamp(3rem,8.8vw,9rem)}
 @media (max-width:1000px){.cx .big{font-size:clamp(3.2rem,13vw,7rem)}}
 </style>
+<style>
+.ph-frame{height:590px}
+.dock{position:absolute;left:12px;right:12px;bottom:92px;display:flex;justify-content:space-around;gap:6px}
+.dock a{display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;color:#fff}
+.dock em{font-style:normal;font-size:12px;color:#D5D9C4}
+.dock .ap{display:block;transition:transform .2s}
+.dock a:hover .ap{transform:translateY(-4px) scale(1.06)}
+.app{display:grid;place-items:center;width:54px;height:54px;border-radius:15px;box-shadow:0 8px 18px -6px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.14)}
+.app svg{width:60%;height:60%}
+.app.li svg{width:100%;height:100%}
+.app.gm{background:#fff}
+.app.gh{background:#24292F}
+.app.li{background:#0A66C2}
+.app.sm{width:38px;height:38px;border-radius:11px}
+/* footer */
+.ft{background:rgba(0,0,0,.18);border-top:1px solid var(--edge);position:relative;z-index:1}
+.ft .wrap{padding-top:46px;padding-bottom:28px}
+.ft-top{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.ft-brand b{display:block;font:800 1.6rem var(--display);letter-spacing:-.03em}
+.ft-brand span{color:var(--muted);font-size:16px}
+.ft-nav{display:flex;gap:26px;flex-wrap:wrap;font-size:16.5px}
+.ft-nav a{color:var(--muted);text-decoration:none}
+.ft-nav a:hover{color:var(--lime)}
+.ft-soc{display:flex;gap:10px}
+.ft-soc a{display:block;transition:transform .2s}
+.ft-soc a:hover{transform:translateY(-3px)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid var(--edge);color:var(--muted);font-size:15px}
+.totop{color:#fff;text-decoration:none;border:1px solid var(--edge);border-radius:999px;padding:6px 18px}
+.totop:hover{background:var(--lime);color:#0B1708;border-color:var(--lime)}
+/* mobile menu */
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--edge);border-radius:12px;background:rgba(255,255,255,.06);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0}
+.menu-btn span{display:block;width:20px;height:2px;border-radius:2px;background:var(--lime);transition:transform .25s,opacity .25s}
+.top.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.top.open .menu-btn span:nth-child(2){opacity:0}
+.top.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:700px){
+  .top{position:sticky}
+  .bar{flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-items:center;padding:12px 20px}
+  .menu-btn{display:inline-flex}
+  .bar nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;padding:6px 20px 20px;background:rgba(10,20,7,.99);border-bottom:1px solid var(--edge)}
+  .top.open .bar nav{display:flex}
+  .bar nav a{padding:15px 2px;font-size:18px;border-bottom:1px solid var(--edge)}
+  .bar nav a.pill{margin-top:16px;text-align:center;padding:13px;border:0;font-weight:700}
+  .ft-top{flex-direction:column;align-items:flex-start}
+  .ft-bot{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:420px){.ph-frame{height:570px}.dock{bottom:88px}}
+</style>
+<style>
+footer.ft .wrap{display:block}
+.ph-frame{height:620px}
+.dock{bottom:98px}
+@media (max-width:420px){.ph-frame{height:600px}.dock{bottom:94px}}
+</style>
 </head>
 <body id="top">
 <a class="skip" href="#work">Skip to projects</a>
 <header class="top"><div class="wrap bar">
   <a class="brand" href="#top">Asma Shahzadi</a>
-  <nav aria-label="Main"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="pill" href="#contact">Let's talk</a></nav>
+  <button class="menu-btn" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="pill" href="#contact">Let's talk</a></nav>
 </div></header>
 
 <main>
@@ -821,6 +876,7 @@ a.notif:hover{background:rgba(214,242,58,.24);border-color:var(--lime)}
           <div class="lk-time"><b id="pt">--:--</b><small id="pd">Multan</small></div>
           <div class="notif n1"><div class="nh"><span>Messages</span><span>now</span></div><p><b>New project?</b> Hi Asma, let's build something together.</p></div>
           <a class="notif n2" href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank" rel="noopener"><div class="nh"><span>LinkedIn</span><span>now</span></div><p><b>Connect with Asma Shahzadi</b> Tap to open her profile.</p></a>
+          <div class="dock"><a href="mailto:asmashahzadi764@gmail.com" id="appmail" aria-label="Email Asma"><span class="ap"><i class="app gm"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></i></span><em>Gmail</em></a><a href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank" rel="noopener" aria-label="Asma on LinkedIn"><span class="ap"><i class="app li"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.2" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="14.5" fill="#fff" letter-spacing="-.6">in</text></svg></i></span><em>LinkedIn</em></a><a href="https://github.com/asmashahzadi764-alt" target="_blank" rel="noopener" aria-label="Asma on GitHub"><span class="ap"><i class="app gh"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></i></span><em>GitHub</em></a></div>
           <div class="slide" id="slide"><span class="s-label">slide to email me</span><button type="button" class="s-thumb" id="sthumb" aria-label="Slide to email me, or press Enter to open your email app">&rarr;</button></div>
         </div>
       </div>
@@ -829,7 +885,16 @@ a.notif:hover{background:rgba(214,242,58,.24);border-color:var(--lime)}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Asma Shahzadi</span><span class="ur" lang="ur" dir="rtl">اسماء شہزادی</span><a href="#top">Back to top</a></div></footer>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand"><b>Asma Shahzadi</b><span>Full Stack Developer from Multan</span></div>
+      <nav class="ft-nav" aria-label="Footer"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="resume.pdf" download>Resume</a></nav>
+      <div class="ft-soc"><a href="mailto:asmashahzadi764@gmail.com" aria-label="Email"><i class="app sm gm"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></i></a><a href="https://www.linkedin.com/in/asma-shahzadi-313291376/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="app sm li"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17.2" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="14.5" fill="#fff" letter-spacing="-.6">in</text></svg></i></a><a href="https://github.com/asmashahzadi764-alt" target="_blank" rel="noopener" aria-label="GitHub"><i class="app sm gh"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></i></a></div>
+    </div>
+    <div class="ft-bot"><span>&copy; 2026 Asma Shahzadi</span><span>Built with HTML, CSS and JavaScript</span><a class="totop" href="#top">Back to top</a></div>
+  </div>
+</footer>
 
 <script>
 (function(){
@@ -1065,6 +1130,17 @@ a.notif:hover{background:rgba(214,242,58,.24);border-color:var(--lime)}
   });
   th.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();deploy()}});
   mail.addEventListener('click',function(e){if(reduce)return;e.preventDefault();deploy()});
+  var am=document.getElementById('appmail');if(am)am.addEventListener('click',function(e){if(reduce)return;e.preventDefault();deploy()});
+})();
+</script>
+<script>
+(function(){
+  var top=document.querySelector('.top'),btn=document.getElementById('menu');
+  function set(o){top.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu')}
+  btn.addEventListener('click',function(){set(!top.classList.contains('open'))});
+  [].forEach.call(document.querySelectorAll('#nav a'),function(a){a.addEventListener('click',function(){set(false)})});
+  addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+  addEventListener('resize',function(){if(innerWidth>700)set(false)});
 })();
 </script>
 </body>
