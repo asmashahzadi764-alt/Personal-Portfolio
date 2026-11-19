@@ -1,12 +1,12 @@
 <div align="center">
 
-# Asma Shahzadi | Portfolio
+# AS | Asma Shahzadi, Portfolio
 
 ### Full-Stack Developer · React, Node.js & AI-Integrated Web Applications
 
 Shipped and deployed, not just demoed.
 
-[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-D6F23A?style=for-the-badge&logo=vercel&logoColor=0B1708&labelColor=0B1708)](https://personal-portfolio-5umb-lap3iuyut-asmashahzadi764-alts-projects.vercel.app/)
+[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Portfolio-D6F23A?style=for-the-badge&logo=vercel&logoColor=0B1708&labelColor=0B1708)](https://asma-portfolio-ten-rho.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/asmashahzadi764-alt)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/asma-shahzadi-313291376/)
 [![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:asmashahzadi764@gmail.com)
@@ -24,41 +24,75 @@ Shipped and deployed, not just demoed.
 
 ## 📌 About
 
-This is my personal portfolio: a single-page site built to show real, deployed projects instead of class assignments. It covers my background as a final-year BS Information Technology student, a GenAI hackathon project, an Urdu-first AI booking agent, client websites for real businesses in Multan, my professional experience, and certifications from Meta, Google and IBM.
+This is my personal portfolio: a single-page site built to show real, deployed projects instead of class assignments. It covers my background as a final-year BS Information Technology student, a GenAI hackathon project, an Urdu-first AI booking agent, client websites, my professional experience, and certifications from Meta, Google and IBM.
+
+It is written in plain HTML, CSS and vanilla JavaScript, with no framework and no build step, so it opens straight from `index.html`.
+
+🔗 **Live site:** [asma-portfolio-ten-rho.vercel.app](https://asma-portfolio-ten-rho.vercel.app/)
 
 ## ✨ Features
 
-- 🖥️ **Live Previews:** a tabbed 3D browser window that shows my deployed sites (ClaimPilot AI, BodyTech Gym, Eco Car Workshop) running
-- 🤖 **AI Demos:** a scripted Urdu booking chat for Mulaqat and an animated ClaimPilot pipeline, from crash photo to fraud score
-- 🏆 **Featured Projects:** ClaimPilot AI (HEC GenAI Hackathon, Cohort 2), Mulaqat and my final year project, shown above the regular project grid
-- 🧊 **Glass Cards:** cursor-following glow and a light 3D tilt on every card
-- 🎬 **Motion:** scroll reveals, a tech marquee and a hero entrance, all switched off for visitors who prefer reduced motion
-- 💼 **Experience Timeline:** PWDP (Government of Punjab), Excelerate, CodeAlpha and freelance work
-- 📱 **Fully Responsive:** layouts for desktop, tablet and mobile
-- ♿ **Accessible:** skip link, visible keyboard focus and semantic headings
+### Hero
+- 🔤 **3D name:** the letters flip in on load and the heading tilts toward the cursor
+- 🧑‍💻 **Cut-out portrait** blended into the background, with an animated stack diagram around it (React, FastAPI, Vercel, LLM APIs, MongoDB)
+- 🧲 **Clickable stack pills:** pick a technology and the projects that use it light up while the rest fade
+- 🏷️ A moving tech strip under the hero
+
+### Selected Work
+- 🗂️ **Three case studies:** ClaimPilot AI (HEC GenAI Hackathon), Mulaqat (Urdu-first AI agent) and the final year project, each in a tilting browser frame with a glare that follows the pointer
+- 🎠 **3D project carousel** for the other six projects: drag to spin, click to bring one forward, arrow keys and dots, with a detail panel beside it
+- 🧩 **Tech chips with real brand icons** that filter every project by technology
+
+### Skills
+- 🪐 **Orbit scene** drawn on a canvas: a glowing core, three tilted rings and 18 skills moving in perspective
+- 🌳 **Icon tree** of skill layers (Frontend, Backend, Data, AI, Ship, Languages), kept in sync with the orbit
+
+### Experience
+- 🕰️ **Career tree** with a glowing "Now" marker and tech chips for each role
+- 🎓 Education, recognition and certifications in simple columns
+
+### Contact
+- 🔦 **Spotlight heading:** outline letters that fill with colour under the cursor
+- 📱 **3D lock-screen phone** with a live clock, a notification, Gmail, LinkedIn and GitHub app icons, and a **slide to email me** slider
+- 💻 A short terminal animation (`git checkout`, `npm run build`, `deploy`) plays before the email app opens
+- 📋 Copy-email button
+
+### Everything else
+- 🔠 **AS monogram** in the navbar and footer
+- 📱 Responsive layout with a menu button on phones
+- ♿ Skip link, visible keyboard focus, keyboard-friendly carousel and sliders, and `prefers-reduced-motion` support
+- 🔍 Page title, description and Open Graph tags
 
 ## 🛠️ Tech Stack
 
 | Layer | Tools |
 |---|---|
 | Markup & Styling | HTML5 and plain CSS (no framework, no build step) |
-| Interactivity | One small vanilla JavaScript file (tabs, tilt, demo chat, IntersectionObserver reveals) |
-| Fonts | Schibsted Grotesk, Instrument Serif, Onest, Noto Nastaliq Urdu (Google Fonts) |
+| Interactivity | Vanilla JavaScript (canvas orbit, CSS 3D transforms, IntersectionObserver) |
+| Fonts | Schibsted Grotesk, Instrument Serif, Onest (Google Fonts) |
+| Icons | [Simple Icons](https://simpleicons.org/) brand logos, inlined as SVG |
 | Hosting | Vercel |
-
-Live previews are iframes of the deployed sites, so those sites must allow embedding.
 
 ## 📂 Folder Structure
 
 ```
-├── index.html          # main portfolio page
-├── resume.pdf          # downloadable resume
+├── index.html            # the whole portfolio
+├── resume.pdf            # downloadable resume
+├── README.md
 └── assets/
-    ├── profile-photo.jpg
+    ├── profile-photo.webp    # cut-out portrait (transparent background)
+    ├── claimpilot.jpg
+    ├── mulaqat.jpg
+    ├── quran-detector.jpg
+    ├── family-dental.jpg
+    ├── bodytech.jpg
+    ├── eco-car.jpg
     ├── ishop.jpg
     ├── iba-chatbot.jpg
     └── pm-tool.jpg
 ```
+
+If a project screenshot is missing, its panel shows the project name instead, so the page never looks broken.
 
 ## 🚀 Getting Started
 
@@ -66,7 +100,7 @@ Live previews are iframes of the deployed sites, so those sites must allow embed
    ```bash
    git clone https://github.com/asmashahzadi764-alt/Personal-Portfolio.git
    ```
-2. Open `index.html` in your browser. There is nothing to install and no build step.
+2. Open `index.html` in your browser. There is nothing to install.
 
 ## 🌐 Deployment
 
@@ -79,11 +113,13 @@ vercel
 
 ## ➕ Adding a New Project
 
-Copy one `<article class="gc p rv">` block inside `<div class="tiles">`, then change the name, description, stack and links. Point the `<iframe>` at the live site, or use an `<img>` from `assets/`.
+- **Carousel project:** add a `<div class="pface">` inside `#ring3`, a matching `rdot` button, and an entry in the `D` array of the carousel script. Set the same `data-tech` words on the panel and in `D` so the technology filter works.
+- **Case study:** copy one `<article class="gc case">` block and edit its text, links and image.
+- Put the screenshot in `assets/` and keep the file name used in the markup.
 
 ## 🖥️ Sections
 
-`Home` → `Live Demos` → `Work` → `Skills` → `Experience & Education` → `Contact`
+`Home` → `Selected Work` → `Skills` → `Experience & Education` → `Contact`
 
 ## 📬 Connect
 
